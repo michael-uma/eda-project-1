@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="funcionario.h" />
+    <ClInclude Include="slot.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
