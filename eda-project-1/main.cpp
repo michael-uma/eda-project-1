@@ -2,7 +2,10 @@
 #include<locale>
 #include<stdlib.h>
 #include<time.h>
+#include <string>
+
 #include "funcionario.h"
+#include "slot.h"
 
 using namespace std;
 
@@ -13,7 +16,7 @@ int main() {
 
 		char utilizador;
 		cout << "******* Bem-Vindo *******" << endl;
-		cout << "Por favor introduza c para cliente ou f para o funcionário" << endl;
+		cout << "Por favor introduza c para cliente ou f para o funcionário. Introduza qualquer outro valor para fechar o programa." << endl;
 		cin >> utilizador;
 
 		if (utilizador == 'c') {
@@ -44,9 +47,9 @@ int main() {
 			funcionario_opcoes(sair);
 
 		}
-		else {
-			cout << "Introduziu uma opção inválida. Fechando programa.";
-			sair = true;
+		else { 
+			cout << "Fechando programa. Adeus! \n";
+			sair = true; 
 		}
 	}
 

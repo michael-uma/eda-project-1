@@ -140,10 +140,15 @@
   <ItemGroup>
     <ClCompile Include="funcionario.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="slot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="funcionario.h" />
     <ClInclude Include="slot.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="precos.txt" />
+    <Text Include="produtos.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -21,6 +21,9 @@
     <ClCompile Include="funcionario.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="slot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="funcionario.h">
@@ -29,5 +32,13 @@
     <ClInclude Include="slot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="produtos.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="precos.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

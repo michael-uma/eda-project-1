@@ -12,3 +12,5 @@ struct slot {
 	int quantity;
 	char code;
 };
+
+void leProduto(string caminhoProdutos, string caminhoPrecos);
