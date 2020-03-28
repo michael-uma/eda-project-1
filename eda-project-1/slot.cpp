@@ -1,7 +1,7 @@
 #include "slot.h"
 #include <iostream>
 #include <fstream>
-#include <Windows.h>
+#define EURO "euros"
 
 void lerFicheiroProdutos(string* listaprodutos) {
     ifstream myFile("produtos.txt");
@@ -116,7 +116,7 @@ void createVendingMachine(string* produtos, float* precos)
 
         cout << "Slot : " << maquina[i].code << endl;
         cout << "Produto : " << maquina[i].p.name << endl;
-        cout << "Preço : " << maquina[i].p.preco << " \u20AC" << endl;
+        cout << "Preço : " << maquina[i].p.preco << " " << EURO << endl;
         cout << "Quantidade : " << maquina[i].quantidade << "   | Capacidade : " << maquina[i].quantidadeMax << endl;
         cout << "------------------------------" << endl;
 
