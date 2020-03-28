@@ -13,4 +13,4 @@ struct slot {
 	char code;
 };
 
-void leProduto(string caminhoProdutos, string caminhoPrecos);
+string* lerFicheiroProdutos();

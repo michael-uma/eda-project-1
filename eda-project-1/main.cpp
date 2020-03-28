@@ -25,7 +25,7 @@ int main() {
 			cout << "Indtroduza o código do produto: ";
 			cin >> escolha_utilizador;
 			cout << endl;
-			cout << "Escolheu FALTA ACABAR.................." << endl;
+			cout << "--- FALTA ACABAR ---" << endl;
 			cout << endl;
 		}
 		else if (utilizador == 'f') {
