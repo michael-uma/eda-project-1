@@ -138,11 +138,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cliente.cpp" />
     <ClCompile Include="funcionario.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="slot.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cliente.h" />
     <ClInclude Include="funcionario.h" />
     <ClInclude Include="slot.h" />
   </ItemGroup>

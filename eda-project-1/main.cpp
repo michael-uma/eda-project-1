@@ -4,6 +4,7 @@
 #include<time.h>
 #include <string>
 
+#include "cliente.h"
 #include "funcionario.h"
 #include "slot.h"
 
@@ -21,28 +22,31 @@ int main() {
 	lerFicheiroProdutos(listaprodutos);
 
 	//Criar Vending Machine
-	createVendingMachine(listaprodutos, listaprecos);
+	int numSlots = rand() % 4 + 9;
+	slot* maquina = new slot[numSlots];
+	createVendingMachine(listaprodutos, listaprecos, maquina, numSlots);
 
 	// Menu de opcoes
  	bool sair = false;
-	/*while (!sair) {
+	while (!sair) {
 
 		char utilizador;
-		cout << "******* Bem-Vindo *******" << endl;
+		cout << "\n******* Bem-Vindo *******" << endl;
 		cout << "Por favor introduza c para cliente ou f para o funcionário. Introduza qualquer outro valor para fechar o programa." << endl;
 		cin >> utilizador;
 
 		if (utilizador == 'c') {
 			char escolha_utilizador;
-			cout << "******* Bem-Vindo Cliente *******" << endl;
-			cout << "Indtroduza o código do produto: ";
+			cout << "\n******* Bem-Vindo Cliente *******" << endl;
+			cout << "Introduza o código do produto: ";
 			cin >> escolha_utilizador;
 			cout << endl;
 			cout << "--- FALTA ACABAR ---" << endl;
 			cout << endl;
 		}
 		else if (utilizador == 'f') {
-			cout << "******* Bem-Vindo Funcionário *******" << endl;
+
+			cout << "\n******* Bem-Vindo Funcionário *******" << endl;
 			cout << "1. Limpar slots" << endl;
 			cout << "2. Limpar máquina" << endl;
 			cout << "3. Adicionar produto" << endl;
@@ -59,10 +63,10 @@ int main() {
 			funcionario_opcoes(sair);
 		}
 		else { 
-			cout << "Fechando programa. Adeus! \n";
+			cout << "\nFechando programa. Adeus!\n";
 			sair = true; 
 		}
-	}*/
+	}
 
 	cin.sync();//manter consola aberta
 	cin.get(); //manter consola aberta

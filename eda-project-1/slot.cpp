@@ -82,11 +82,10 @@ char buscaCodigo(int i)
     return c;
 }
 
-void createVendingMachine(string* produtos, float* precos)
+void createVendingMachine(string* produtos, float* precos, slot* maquina, int numSlots)
 {
-    int numSlots = rand() % 4 + 9;
-    slot* maquina = new slot[numSlots];
-
+   /* int numSlots = rand() % 4 + 9;
+    slot* maquina = new slot[numSlots];*/
     int qProdutosMax , posProduto, posPreco;
 
     for (int i = 0; i < numSlots; i++) {
@@ -118,7 +117,7 @@ void createVendingMachine(string* produtos, float* precos)
         cout << "Produto : " << maquina[i].p.name << endl;
         cout << "Preço : " << maquina[i].p.preco << " " << EURO << endl;
         cout << "Quantidade : " << maquina[i].quantidade << "   | Capacidade : " << maquina[i].quantidadeMax << endl;
-        cout << "------------------------------" << endl;
+        cout << "------------------------------\n" << endl;
 
     }
 }

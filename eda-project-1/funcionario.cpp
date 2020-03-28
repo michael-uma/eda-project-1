@@ -53,6 +53,6 @@ void funcionario_opcoes(bool sair)
 		}
 		else
 			cout << "Por favor digite uma opção válida!";
-		funcionario_opcoes(sair);
+			funcionario_opcoes(sair);
 	}
 }

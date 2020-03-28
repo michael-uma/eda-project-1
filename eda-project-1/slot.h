@@ -23,4 +23,4 @@ void lerFicheiroPrecos(float* listaprecos);
 
 char buscaCodigo(int i);
 
-void createVendingMachine(string* produtos, float* precos);
+void createVendingMachine(string* produtos, float* precos, slot* maquina, int numSlots);
