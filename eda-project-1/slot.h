@@ -7,17 +7,20 @@ using namespace std;
 
 struct produto {
 	string name;
-	float price;
+	float preco;
 };
 
 struct slot {
 	produto p;
-	int quantity;
+	int quantidade;
+	int quantidadeMax;
 	char code;
 };
 
-string* lerFicheiroProdutos();
+void lerFicheiroProdutos(string* listaprodutos);
 
-float* lerFicheiroPrecos();
+void lerFicheiroPrecos(float* listaprecos);
 
-slot createSlot(string* produtos, float* precos, int numSlots);
+char buscaCodigo(int i);
+
+void createVendingMachine(string* produtos, float* precos);

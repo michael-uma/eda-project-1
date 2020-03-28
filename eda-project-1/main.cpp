@@ -10,9 +10,22 @@
 using namespace std;
 
 int main() {
+	//inicialização
 	locale pt = pt.global(locale(""));
-	bool sair = false;
-	while (!sair) {
+	srand((unsigned)time(NULL));
+
+	// Para guardar todos os produtos e preços em arrays.
+	float listaprecos[NUM_PRECOS];
+	string listaprodutos[NUM_PRODUTOS];
+	lerFicheiroPrecos(listaprecos);
+	lerFicheiroProdutos(listaprodutos);
+
+	//Criar Vending Machine
+	createVendingMachine(listaprodutos, listaprecos);
+
+	// Menu de opcoes
+ 	bool sair = false;
+	/*while (!sair) {
 
 		char utilizador;
 		cout << "******* Bem-Vindo *******" << endl;
@@ -29,7 +42,6 @@ int main() {
 			cout << endl;
 		}
 		else if (utilizador == 'f') {
-			system("cls");
 			cout << "******* Bem-Vindo Funcionário *******" << endl;
 			cout << "1. Limpar slots" << endl;
 			cout << "2. Limpar máquina" << endl;
@@ -45,13 +57,12 @@ int main() {
 			cout << "Digite a sua opção: " << endl;
 
 			funcionario_opcoes(sair);
-
 		}
 		else { 
 			cout << "Fechando programa. Adeus! \n";
 			sair = true; 
 		}
-	}
+	}*/
 
 	cin.sync();//manter consola aberta
 	cin.get(); //manter consola aberta
