@@ -82,6 +82,53 @@ char buscaCodigo(int i)
     return c;
 }
 
+int buscaPos(char c)
+{
+    int i;
+    switch (c) {
+    case 'A':
+        i = 0;
+        break;
+    case 'B':
+        i = 1;
+        break;
+    case 'C':
+        i = 2;
+        break;
+    case 'D':
+        i = 3;
+        break;
+    case 'E':
+        i = 4;
+        break;
+    case 'F':
+        i = 5;
+        break;
+    case 'G':
+        i = 6;
+        break;
+    case 'H':
+        i = 7;
+        break;
+    case 'I':
+        i = 8;
+        break;
+    case 'J':
+        i = 9;
+        break;
+    case 'K':
+        i = 10;
+        break;
+    case 'L':
+        i = 11;
+        break;
+    default:
+        i = -1;
+        break;
+    }
+    return i;
+}
+
 void createVendingMachine(string* produtos, float* precos, slot* maquina, int numSlots)
 {
    /* int numSlots = rand() % 4 + 9;

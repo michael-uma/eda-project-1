@@ -36,13 +36,7 @@ int main() {
 		cin >> utilizador;
 
 		if (utilizador == 'c') {
-			char escolha_utilizador;
-			cout << "\n******* Bem-Vindo Cliente *******" << endl;
-			cout << "Introduza o código do produto: ";
-			cin >> escolha_utilizador;
-			cout << endl;
-			cout << "--- FALTA ACABAR ---" << endl;
-			cout << endl;
+			menu_cliente(maquina);
 		}
 		else if (utilizador == 'f') {
 
