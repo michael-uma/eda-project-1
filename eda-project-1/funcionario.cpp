@@ -36,7 +36,7 @@ void funcionario_opcoes(bool sair)
 			//Qualquer coisa para imprimir produtos;
 		}
 		else if (escolha_funcionario == 8) {
-			cout << "Escolheu gravra máquina" << endl;
+			cout << "Escolheu gravar máquina" << endl;
 			//Qualquer coisa para gravar máquina;
 		}
 		else if (escolha_funcionario == 9) {

@@ -142,17 +142,15 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
         posProduto = rand() % NUM_PRODUTOS;
 
         // Verificar se o produto escolhido já está noutro slot da máquina:
-        for (int j = 0 ; j < i; j++)
+        for (int j = 0; j < i; j++)
         {
-            while (maquina[j].p.name == produtos[posProduto]) 
+            while (maquina[j].p.name == produtos[posProduto])
             {
+                // cout << "### produto alterado de " << produtos[posProduto] << " ###" << endl;   // isto é para testar
                 posProduto = rand() % NUM_PRODUTOS;
-                // cout << "produto alterado" << endl;  // isto foi para testar
+                // cout << "### produto alterado para " << produtos[posProduto] << " ###" << endl;   // isto é para testar   
             }
         }
-
-        // para testar
-        // cout << "\n\nNúmero do slot: " << i << "\nposPreco = " << posPreco << "\nposProduto = " << posProduto << "\nqProdutosMax = " << qProdutosMax << endl;
 
         maquina[i].p.name = produtos[posProduto];
         maquina[i].p.preco = precos[posPreco];
@@ -160,11 +158,42 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
         maquina[i].quantidadeMax = qProdutosMax;
         maquina[i].quantidade = maquina[i].quantidadeMax;
 
+        // print para testar
+        /*cout << "Slot : " << maquina[i].code << endl;
+        cout << "Produto : " << maquina[i].p.name << endl;
+        cout << "Preço : " << maquina[i].p.preco << " " << EURO << endl;
+        cout << "Quantidade : " << maquina[i].quantidade << "   | Capacidade : " << maquina[i].quantidadeMax << endl;
+        cout << "------------------------------\n" << endl;  */
+
+        // cout << "\nNúmero do slot: " << i << "\nposPreco = " << posPreco << "\nposProduto = " << posProduto << "\nqProdutosMax = " << qProdutosMax << "|\n" << endl;
+    }
+
+    // Verificar se ocorreu duplos 
+    // Nota: Talvez arranjar uma melhor maneira de se fazer isto? mas acho que funcionou.
+    bool houveRepetidos = true;
+    while (houveRepetidos) {
+        for (int i = 0; i < numSlots; i++) {
+            for (int j = 0; j < numSlots; j++)
+            {
+                if (i != j && maquina[i].p.name == maquina[j].p.name) { // aqui dentro detetam-se quais são os repetidos
+                    // comentar este cout após certificar que funciona
+                    cout << "EXISTIRAM REPETIDOS -> Posição: " << j << " e " << i << "\n       -> Produto:" << maquina[j].p.name << endl;
+                    // altera-se o repetido e revirifica-se:
+                    posProduto = rand() % NUM_PRODUTOS;
+                    maquina[j].p.name = produtos[posProduto];
+                }
+            }
+        }
+        houveRepetidos = false;
+    }
+
+    cout << "-------- Máquina de Vending: --------\n" << endl;
+    // Output da máquina:
+    for (int i = 0; i < numSlots; i++) {
         cout << "Slot : " << maquina[i].code << endl;
         cout << "Produto : " << maquina[i].p.name << endl;
         cout << "Preço : " << maquina[i].p.preco << " " << EURO << endl;
         cout << "Quantidade : " << maquina[i].quantidade << "   | Capacidade : " << maquina[i].quantidadeMax << endl;
         cout << "------------------------------\n" << endl;
-
     }
 }

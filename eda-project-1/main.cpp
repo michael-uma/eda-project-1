@@ -1,7 +1,7 @@
-#include<iostream>
-#include<locale>
-#include<stdlib.h>
-#include<time.h>
+#include <iostream>
+#include <locale>
+#include <stdlib.h>
+#include <time.h>
 #include <string>
 
 #include "cliente.h"
