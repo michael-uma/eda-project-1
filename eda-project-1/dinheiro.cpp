@@ -34,19 +34,19 @@ void fundos() {
 			cout << "Existem apenas " << moedasdoiseuros << " moedas de dois euros"<<endl;
 		}
 		else if (moedasumeuros <= 3) {
-			cout << "Existem apenas " << moedasumeuros << " moedas de dois euros"<<endl;
+			cout << "Existem apenas " << moedasumeuros << " moedas de um euro"<<endl;
 		}
 		else if (moedascinquentacents <= 3) {
-			cout << "Existem apenas " << moedascinquentacents << " moedas de dois euros"<<endl;
+			cout << "Existem apenas " << moedascinquentacents << " moedas de cinquenta cêntimos"<<endl;
 		}
 		else if (moedasvintecents <=3) {
-			cout << "Existem apenas " << moedasvintecents << " moedas de dois euros"<<endl;
+			cout << "Existem apenas " << moedasvintecents << " moedas de vinte cêntimos"<<endl;
 		}
 		else if (moedasdezcents <=3) {
-			cout << "Existem apenas " << moedasdezcents << " moedas de dois euros"<<endl;
+			cout << "Existem apenas " << moedasdezcents << " moedas de dez cêntimos"<<endl;
 		}
 		else if (moedascincocents <=3) {
-			cout << "Existem apenas " << moedascincocents << " moedas de dois euros" << endl;
+			cout << "Existem apenas " << moedascincocents << " moedas de cinco cêntimos" << endl;
 		}
 
 
