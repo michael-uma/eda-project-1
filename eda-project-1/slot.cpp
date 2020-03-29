@@ -131,9 +131,9 @@ int buscaPos(char c)
 
 void createVendingMachine(string* produtos, float* precos, slot* maquina, int numSlots)
 {
-   /* int numSlots = rand() % 4 + 9;
-    slot* maquina = new slot[numSlots];*/
-    int qProdutosMax , posProduto, posPreco;
+    /* int numSlots = rand() % 4 + 9;
+     slot* maquina = new slot[numSlots];*/
+    int qProdutosMax, posProduto, posPreco;
 
     for (int i = 0; i < numSlots; i++) {
 
@@ -170,21 +170,30 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
 
     // Verificar se ocorreu duplos 
     // Nota: Talvez arranjar uma melhor maneira de se fazer isto? mas acho que funcionou.
-    bool houveRepetidos = true;
-    while (houveRepetidos) {
-        for (int i = 0; i < numSlots; i++) {
-            for (int j = 0; j < numSlots; j++)
-            {
-                if (i != j && maquina[i].p.name == maquina[j].p.name) { // aqui dentro detetam-se quais são os repetidos
-                    // comentar este cout após certificar que funciona
-                    cout << "EXISTIRAM REPETIDOS -> Posição: " << j << " e " << i << "\n       -> Produto:" << maquina[j].p.name << endl;
-                    // altera-se o repetido e revirifica-se:
-                    posProduto = rand() % NUM_PRODUTOS;
-                    maquina[j].p.name = produtos[posProduto];
+    string listaProdutosnoSlot[12];
+
+    for (int i = 0; i < numSlots; i++)
+        listaProdutosnoSlot[i] = maquina[i].p.name;
+
+    bool unico = true;
+    for (int i = 1; i < numSlots; i++) {
+        for (int j = 0; j < i; j++) {
+            if (listaProdutosnoSlot[i] == listaProdutosnoSlot[j]) {
+                // cout << i << endl; //ver onde existia duplicacao na posicao
+                for (int k = 0; k < NUM_PRODUTOS; k++) {
+                    for (int l = 0; l < numSlots; l++) {
+                        if (produtos[k] == listaProdutosnoSlot[l]) {
+                            unico = false;
+                        }
+                    }
+                    if (unico == true) {
+                        maquina[i].p.name = produtos[k];
+                        listaProdutosnoSlot[i] = maquina[i].p.name; // para poder atualizar o produto que foi alterado e que ja foi posto no slot!
+                    }
+                    unico = true;
                 }
             }
         }
-        houveRepetidos = false;
     }
 
     cout << "-------- Máquina de Vending: --------\n" << endl;
