@@ -7,3 +7,4 @@
 
 void fundos();
 
+void remover_fundos(void fundos());
