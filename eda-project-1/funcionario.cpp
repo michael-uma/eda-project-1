@@ -1,12 +1,13 @@
 #include "funcionario.h"
 #include "dinheiro.h"
+#include "slot.h"
 #include<iostream>
 using namespace std;
 
-void menu_funcionario(bool sair)
+void menu_funcionario(slot* maquina)
 {
-	if (!sair) {
-
+	bool sair = false;
+	while (!sair) {
 		int escolha_funcionario;
 		cout << "\n******* Bem-Vindo Funcionário *******" << endl;
 		cout << "1. Limpar slots" << endl;
@@ -70,6 +71,5 @@ void menu_funcionario(bool sair)
 		}
 		else
 			cout << "Por favor digite uma opção válida!";
-			menu_funcionario(sair);
 	}
 }

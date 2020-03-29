@@ -39,7 +39,7 @@ int main() {
 			menu_cliente(maquina);
 		}
 		else if (utilizador == 'f') {
-			menu_funcionario(sair);
+			menu_funcionario(maquina);
 		}
 		else { 
 			cout << "\nFechando programa. Adeus!\n";
