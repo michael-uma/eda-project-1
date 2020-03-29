@@ -5,6 +5,6 @@
 
 
 
-void fundos();
+void fundos(int moedas[6]);
 
-void remover_fundos(void fundos());
+void remover_fundos(int moedas[6]);
