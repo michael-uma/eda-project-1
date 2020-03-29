@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string>
-
+#include "dinheiro.h"
 #include "cliente.h"
 #include "funcionario.h"
 #include "slot.h"
@@ -11,11 +11,12 @@
 using namespace std;
 
 int main() {
-	//inicialização
+	//inicializaÃ§Ã£o
 	locale pt = pt.global(locale(""));
 	srand((unsigned)time(NULL));
+	int* moedas = new int[6];
 
-	// Para guardar todos os produtos e preços em arrays.
+	// Para guardar todos os produtos e preÃ§os em arrays.
 	float listaprecos[NUM_PRECOS];
 	string listaprodutos[NUM_PRODUTOS];
 	lerFicheiroPrecos(listaprecos);
@@ -32,7 +33,7 @@ int main() {
 
 		char utilizador;
 		cout << "\n******* Bem-Vindo *******" << endl;
-		cout << "Por favor introduza c para cliente ou f para o funcionário. Introduza qualquer outro valor para fechar o programa." << endl;
+		cout << "Por favor introduza c para cliente ou f para o funcionÃ¡rio. Introduza qualquer outro valor para fechar o programa." << endl;
 		cin >> utilizador;
 
 		if (utilizador == 'c') {
