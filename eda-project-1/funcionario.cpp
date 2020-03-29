@@ -4,24 +4,24 @@
 #include<iostream>
 using namespace std;
 
-void menu_funcionario(slot* maquina)
+void menu_funcionario(slot* maquina;int moedas[6]) //Por favor vejam se altera alguns codigos!!! PQ ADICIONEI OUTRO ARGUMENTO!!!!
 {
 	bool sair = false;
 	while (!sair) {
 		int escolha_funcionario;
-		cout << "\n******* Bem-Vindo Funcionário *******" << endl;
+		cout << "\n******* Bem-Vindo FuncionÃ¡rio *******" << endl;
 		cout << "1. Limpar slots" << endl;
-		cout << "2. Limpar máquina" << endl;
+		cout << "2. Limpar mÃ¡quina" << endl;
 		cout << "3. Adicionar produto" << endl;
-		cout << "4. Alterar preço" << endl;
+		cout << "4. Alterar preÃ§o" << endl;
 		cout << "5. Adicionar slot" << endl;
 		cout << "6. Carregar moedas" << endl;
 		cout << "7. Imprimir produtos" << endl;
-		cout << "8. Gravar máquina" << endl;
-		cout << "9. Carregar máquina" << endl;
+		cout << "8. Gravar mÃ¡quina" << endl;
+		cout << "9. Carregar mÃ¡quina" << endl;
 		cout << "10. Remover trocos" << endl;
 		cout << "0. Voltar" << endl;
-		cout << "Digite a sua opção: " << endl;
+		cout << "Digite a sua opÃ§Ã£o: " << endl;
 
 		cin >> escolha_funcionario;
 
@@ -30,16 +30,16 @@ void menu_funcionario(slot* maquina)
 			//Qualquer coisa para limpar stock;
 		}
 		else if (escolha_funcionario == 2) {
-			cout << "Escolheu limpar a máquina! " << endl;
-			//Qualquer coisa para limpar máquina;
+			cout << "Escolheu limpar a mÃ¡quina! " << endl;
+			//Qualquer coisa para limpar mÃ¡quina;
 		}
 		else if (escolha_funcionario == 3) {
 			cout << "Escolheu adicionar produto! " << endl;
 			//Qualquer coisa para adicionar produto;
 		}
 		else if (escolha_funcionario == 4) {
-			cout << "Escolheu alterar preço(s)! " << endl;
-			//Qualquer coisa para alterar preço(s);
+			cout << "Escolheu alterar preÃ§o(s)! " << endl;
+			//Qualquer coisa para alterar preÃ§o(s);
 		}
 		else if (escolha_funcionario == 5) {
 			cout << "Escolheu adicionar slots! " << endl;
@@ -54,22 +54,22 @@ void menu_funcionario(slot* maquina)
 			//Qualquer coisa para imprimir produtos;
 		}
 		else if (escolha_funcionario == 8) {
-			cout << "Escolheu gravar máquina" << endl;
-			//Qualquer coisa para gravar máquina;
+			cout << "Escolheu gravar mÃ¡quina" << endl;
+			//Qualquer coisa para gravar mÃ¡quina;
 		}
 		else if (escolha_funcionario == 9) {
-			cout << "Escolheu carregar máquina! " << endl;
-			//Qualquer coisa para carregar máquina;
+			cout << "Escolheu carregar mÃ¡quina! " << endl;
+			//Qualquer coisa para carregar mÃ¡quina;
 		}
 		else if (escolha_funcionario == 10) {
 			cout << "Escolheu remover os trocos! " << endl;
-			//Qualquer coisa para remover trocos;
+			remover_fundos(moedas);
 		}
 		else if (escolha_funcionario == 0) {
 			cout << "Escolheu Voltar! " << endl;
 			sair = true;
 		}
 		else
-			cout << "Por favor digite uma opção válida!";
+			cout << "Por favor digite uma opÃ§Ã£o vÃ¡lida!";
 	}
 }
