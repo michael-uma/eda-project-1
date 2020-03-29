@@ -27,6 +27,9 @@
     <ClCompile Include="cliente.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="dinheiro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="funcionario.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cliente.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dinheiro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

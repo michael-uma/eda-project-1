@@ -1,3 +1,3 @@
 #pragma once
 
-void funcionario_opcoes(bool sair);
+void menu_funcionario(bool sair);

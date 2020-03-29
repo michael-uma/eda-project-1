@@ -1,12 +1,29 @@
 #include "funcionario.h"
+#include "dinheiro.h"
 #include<iostream>
 using namespace std;
 
-void funcionario_opcoes(bool sair)
+void menu_funcionario(bool sair)
 {
 	if (!sair) {
+
 		int escolha_funcionario;
+		cout << "\n******* Bem-Vindo Funcionário *******" << endl;
+		cout << "1. Limpar slots" << endl;
+		cout << "2. Limpar máquina" << endl;
+		cout << "3. Adicionar produto" << endl;
+		cout << "4. Alterar preço" << endl;
+		cout << "5. Adicionar slot" << endl;
+		cout << "6. Carregar moedas" << endl;
+		cout << "7. Imprimir produtos" << endl;
+		cout << "8. Gravar máquina" << endl;
+		cout << "9. Carregar máquina" << endl;
+		cout << "10. Remover trocos" << endl;
+		cout << "0. Voltar" << endl;
+		cout << "Digite a sua opção: " << endl;
+
 		cin >> escolha_funcionario;
+
 		if (escolha_funcionario == 1) {
 			cout << "Escolheu limpar os slots! " << endl;
 			//Qualquer coisa para limpar stock;
@@ -53,6 +70,6 @@ void funcionario_opcoes(bool sair)
 		}
 		else
 			cout << "Por favor digite uma opção válida!";
-			funcionario_opcoes(sair);
+			menu_funcionario(sair);
 	}
 }

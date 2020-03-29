@@ -39,22 +39,7 @@ int main() {
 			menu_cliente(maquina);
 		}
 		else if (utilizador == 'f') {
-
-			cout << "\n******* Bem-Vindo Funcionário *******" << endl;
-			cout << "1. Limpar slots" << endl;
-			cout << "2. Limpar máquina" << endl;
-			cout << "3. Adicionar produto" << endl;
-			cout << "4. Alterar preço" << endl;
-			cout << "5. Adicionar slot" << endl;
-			cout << "6. Carregar moedas" << endl;
-			cout << "7. Imprimir produtos" << endl;
-			cout << "8. Gravar máquina" << endl;
-			cout << "9. Carregar máquina" << endl;
-			cout << "10. Remover trocos" << endl;
-			cout << "0. Voltar" << endl;
-			cout << "Digite a sua opção: " << endl;
-
-			funcionario_opcoes(sair);
+			menu_funcionario(sair);
 		}
 		else { 
 			cout << "\nFechando programa. Adeus!\n";

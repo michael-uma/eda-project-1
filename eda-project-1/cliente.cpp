@@ -20,5 +20,4 @@ void menu_cliente(slot* maquina) {
 		cout << "Introduza a quantidade de moedas de " << tiposMoedas[i] << ":";
 		cin >> quantMoedas[i];
 	}
-
 }
