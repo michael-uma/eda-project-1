@@ -4,7 +4,7 @@
 #include<iostream>
 using namespace std;
 
-void menu_funcionario(slot* maquina;int moedas[6]) //Por favor vejam se altera alguns codigos!!! PQ ADICIONEI OUTRO ARGUMENTO!!!!
+void menu_funcionario(slot* maquina,int moedas[6]) //Por favor vejam se altera alguns codigos!!! PQ ADICIONEI OUTRO ARGUMENTO!!!!
 {
 	bool sair = false;
 	while (!sair) {
