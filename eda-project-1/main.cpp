@@ -40,7 +40,7 @@ int main() {
 			menu_cliente(maquina);
 		}
 		else if (utilizador == 'f') {
-			menu_funcionario(maquina);
+			menu_funcionario(maquina,moedas);
 		}
 		else { 
 			cout << "\nFechando programa. Adeus!\n";
