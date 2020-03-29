@@ -2,4 +2,4 @@
 #include "dinheiro.h"
 #include "slot.h"
 
-void menu_funcionario(slot* maquina);
+void menu_funcionario(slot* maquina;int moedas[6]);
