@@ -36,13 +36,13 @@ void fundos(int moedas[6])
 			cout << "Existem apenas " << moedas[5] << " moedas de 5 centemos" << endl;
 		}
 	}
-	cout << "***Antes***" << endl;
+	/*cout << "***Antes***" << endl;
 	cout << "2 ->" << moedas[0] << endl;
 	cout << "1-> " << moedas[1] << endl;
 	cout << "0.5 ->" << moedas[2] << endl;
 	cout << "0.2-> " << moedas[3] << endl;
 	cout << "0.1-> " << moedas[4] << endl;
-	cout << "0.05-> " << moedas[5] << endl; //teste!!!
+	cout << "0.05-> " << moedas[5] << endl; //teste!!!*/
 }
 
 	void remover_fundos(int moedas[6])
@@ -51,7 +51,7 @@ void fundos(int moedas[6])
 		int remover;
 		cout << "***Remover Fundos***"<<endl;
 		for (int i = 0; i < 6; i++) {
-			cout << "Quanto moedasd de 2 euros deseja remover? "<<endl;
+			cout << "Quanto moedas euros deseja remover? "<<endl;
 			cin >> remover;
 			while(moedas[i] - remover < 0){
 				//if (moedas[i] - remover < 0) {
@@ -61,12 +61,13 @@ void fundos(int moedas[6])
 			moedas[i] = moedas[i] - remover;
 		}
 
-		cout << "***Depois***" << endl;
-		cout << "2 ->" << moedas[0] << endl;
-		cout << "1-> " << moedas[1] << endl;
-		cout << "0.5 ->" << moedas[2] << endl;
-		cout << "0.2-> " << moedas[3] << endl;
-		cout << "0.1-> " << moedas[4] << endl;
-		cout << "0.05-> " << moedas[5] << endl; //teste!!!
+		cout << "***Fundos***" << endl;
+		cout << "2 euros ->" << moedas[0] << endl;
+		cout << "1 euros-> " << moedas[1] << endl;
+		cout << "50 centemos->" << moedas[2] << endl;
+		cout << "20 centemos-> " << moedas[3] << endl;
+		cout << "10 centemos -> " << moedas[4] << endl;
+		cout << "5 centemos-> " << moedas[5] << endl;
+		cout << endl;
 
 	}
