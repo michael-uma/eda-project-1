@@ -71,3 +71,12 @@ void fundos(int moedas[6])
 		cout << endl;
 
 	}
+
+
+	void carregar_moedas(int moedas[8]) {
+
+		int adicionar;
+
+
+
+	}
