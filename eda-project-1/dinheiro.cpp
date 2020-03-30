@@ -24,16 +24,16 @@ void fundos(int moedas[6])
 			cout << "Existem apenas " << moedas[1] << " moedas de 1 euros" << endl;
 		}
 		else if (moedas[2] <= 3) {
-			cout << "Existem apenas " << moedas[2] << " moedas de 50 centemos " << endl;
+			cout << "Existem apenas " << moedas[2] << " moedas de 50 centimos " << endl;
 		}
 		else if (moedas[3] <= 3) {
-			cout << "Existem apenas " << moedas[3] << " moedas de 20 centemos" << endl;
+			cout << "Existem apenas " << moedas[3] << " moedas de 20 centimos" << endl;
 		}
 		else if (moedas[4] <= 3) {
-			cout << "Existem apenas " << moedas[4] << " moedas de 10 centemos" << endl;
+			cout << "Existem apenas " << moedas[4] << " moedas de 10 centimos" << endl;
 		}
 		else if (moedas[5] <= 3) {
-			cout << "Existem apenas " << moedas[5] << " moedas de 5 centemos" << endl;
+			cout << "Existem apenas " << moedas[5] << " moedas de 5 centimos" << endl;
 		}
 	}
 	/*cout << "***Antes***" << endl;
@@ -64,10 +64,10 @@ void fundos(int moedas[6])
 		cout << "***Fundos***" << endl;
 		cout << "2 euros ->" << moedas[0] << endl;
 		cout << "1 euros-> " << moedas[1] << endl;
-		cout << "50 centemos->" << moedas[2] << endl;
-		cout << "20 centemos-> " << moedas[3] << endl;
-		cout << "10 centemos -> " << moedas[4] << endl;
-		cout << "5 centemos-> " << moedas[5] << endl;
+		cout << "50 centimos->" << moedas[2] << endl;
+		cout << "20 centimos-> " << moedas[3] << endl;
+		cout << "10 centimos -> " << moedas[4] << endl;
+		cout << "5 centimos-> " << moedas[5] << endl;
 		cout << endl;
 
 	}
