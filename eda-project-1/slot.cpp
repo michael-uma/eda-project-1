@@ -142,13 +142,25 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
         posProduto = rand() % NUM_PRODUTOS;
 
         // Verificar se o produto escolhido já está noutro slot da máquina:
-        for (int j = 0; j < i; j++)
-        {
-            while (maquina[j].p.name == produtos[posProduto])
+
+        bool unico = true;
+        while (unico) {
+            for (int j = 0; j < i; j++)
             {
-                // cout << "### produto alterado de " << produtos[posProduto] << " ###" << endl;   // isto é para testar
+                if (maquina[j].p.name == produtos[posProduto]) {
+                    unico = false;
+                }
+            }
+
+            if (unico) {
+                break;
+            }
+
+            if (!unico) {
+                cout << "### produto alterado de " << produtos[posProduto] << " ###" << endl; // para testar
                 posProduto = rand() % NUM_PRODUTOS;
-                // cout << "### produto alterado para " << produtos[posProduto] << " ###" << endl;   // isto é para testar   
+                cout << "### produto alterado para " << produtos[posProduto] << " ###" << endl; // para testar
+                unico = true;
             }
         }
 
@@ -170,6 +182,7 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
 
     // Verificar se ocorreu duplos 
     // Nota: Talvez arranjar uma melhor maneira de se fazer isto? mas acho que funcionou.
+    /*
     string listaProdutosnoSlot[12];
 
     for (int i = 0; i < numSlots; i++)
@@ -194,7 +207,7 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
                 }
             }
         }
-    }
+    }*/
 
     cout << "-------- Máquina de Vending: --------\n" << endl;
     // Output da máquina:
