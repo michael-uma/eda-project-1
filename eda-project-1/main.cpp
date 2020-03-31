@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string>
+
 #include "dinheiro.h"
 #include "cliente.h"
 #include "funcionario.h"
@@ -30,17 +31,16 @@ int main() {
 	// Menu de opcoes
  	bool sair = false;
 	while (!sair) {
-
 		char utilizador;
 		cout << "\n******* Bem-Vindo *******" << endl;
-		cout << "Por favor introduza c para cliente ou f para o funcionário. Introduza qualquer outro valor para fechar o programa." << endl;
+		cout << "Por favor introduza c para cliente ou f para o funcionário. \nIntroduza qualquer outro valor para fechar o programa." << endl;
 		cin >> utilizador;
 
 		if (utilizador == 'c') {
 			menu_cliente(maquina);
 		}
 		else if (utilizador == 'f') {
-			menu_funcionario(maquina,moedas);
+			menu_funcionario(maquina, moedas, numSlots);
 		}
 		else { 
 			cout << "\nFechando programa. Adeus!\n";

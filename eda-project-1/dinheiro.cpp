@@ -74,13 +74,9 @@ void fundos(int moedas[6])
 
 
 	void carregar_moedas(int moedas[6]) {
-		int adicionar;
+		int adicionar = -1;
 		cout << "***Carregar moedas***" << endl;
 		for (int j = 0; j < 6; j++) {
-			while (adicionar < 0) {
-				cout << "Adicione um valor positivo!: " << endl;
-				cin >> adicionar;
-			}
 			if (j == 0) {
 				cout << "Quantas moedas de 2 euros deseja adicionar: " << endl;
 				cin >> adicionar;
@@ -110,6 +106,11 @@ void fundos(int moedas[6])
 				cout << "Quantas moedas de 5 centimos deseja adicionar: " << endl;
 				cin >> adicionar;
 				moedas[5] = moedas[5] + adicionar;
+			}
+
+			if (adicionar < 0) {
+				cout << "Insira um valor positivo valor positivo!: " << endl;
+				j--;
 			}
 		}
 	}

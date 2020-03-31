@@ -1,10 +1,54 @@
 #include "funcionario.h"
 #include "dinheiro.h"
 #include "slot.h"
+#include <algorithm>
+#include <locale>
 #include<iostream>
 using namespace std;
 
-void menu_funcionario(slot* maquina,int moedas[6]) //Por favor vejam se altera alguns codigos!!! PQ ADICIONEI OUTRO ARGUMENTO!!!!
+
+void imprimir_produtos(slot* maquina, int numSlots)
+{
+	cout << "	1.  Por ordem alfabética" << endl;
+	cout << "	2.  Por preço" << endl;
+	cout << "	3.  Por quantidade disponível" << endl;
+	cout << "Escolha a sua opção: ";
+	int opcao;
+	cin >> opcao;
+	string* produtos = new string[numSlots];
+	for (int i = 0; i < numSlots; i++) {
+		produtos[i] = maquina[i].p.name;
+	}
+	switch (opcao) {
+	case 1:
+		sort(produtos, produtos + numSlots);
+		break;
+	case 2:
+		for (int i = 0; i < numSlots; i++) {
+
+		}
+		break;
+	case 3:
+		for (int i = 0; i < numSlots; i++) {
+			
+		}
+		break;
+	default:
+		cout << "Escolheu uma opção inválida. Voltando para o menu anterior." << endl;
+		break;
+	}
+
+	// Print da lista ordenada
+	if (opcao == 1 || opcao == 2 || opcao == 3) {
+		for (int i = 0; i < numSlots; i++) {
+			cout << produtos[i] << endl;
+		}
+	}
+	cout << endl;
+}
+
+
+void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vejam se altera alguns codigos!!! PQ ADICIONEI OUTRO ARGUMENTO!!!!
 {
 	bool sair = false;
 	while (!sair) {
@@ -47,11 +91,11 @@ void menu_funcionario(slot* maquina,int moedas[6]) //Por favor vejam se altera a
 		}
 		else if (escolha_funcionario == 6) {
 			cout << "Escolheu carregar moedas! " << endl;
-			//Qualquer coisa para carregar moedas;
+			carregar_moedas(moedas);
 		}
 		else if (escolha_funcionario == 7) {
 			cout << "Escolheu imprimir produtos! " << endl;
-			//Qualquer coisa para imprimir produtos;
+			imprimir_produtos(maquina, numSlots);
 		}
 		else if (escolha_funcionario == 8) {
 			cout << "Escolheu gravar máquina" << endl;

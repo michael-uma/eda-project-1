@@ -157,9 +157,9 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
             }
 
             if (!unico) {
-                cout << "### produto alterado de " << produtos[posProduto] << " ###" << endl; // para testar
+                // cout << "### produto alterado de " << produtos[posProduto] << " ###" << endl; // para testar
                 posProduto = rand() % NUM_PRODUTOS;
-                cout << "### produto alterado para " << produtos[posProduto] << " ###" << endl; // para testar
+                // cout << "### produto alterado para " << produtos[posProduto] << " ###" << endl; // para testar
                 unico = true;
             }
         }
