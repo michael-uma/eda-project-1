@@ -49,7 +49,7 @@ int main() {
 	}
 
 	// Finalização do programa
-	delete(moedas);
+	delete[](moedas);
 	cin.sync();//manter consola aberta
 	cin.get(); //manter consola aberta
 	cin.ignore();

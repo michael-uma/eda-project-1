@@ -114,10 +114,3 @@ void fundos(int moedas[6])
 			}
 		}
 	}
-
-				
-
-
-				
-			
-
