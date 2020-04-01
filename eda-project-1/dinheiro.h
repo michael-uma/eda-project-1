@@ -4,7 +4,6 @@
 #include<time.h>
 
 
-
 void fundos(int moedas[6]);
 
 void remover_fundos(int moedas[6]);

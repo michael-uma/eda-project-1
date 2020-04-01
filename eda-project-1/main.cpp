@@ -34,6 +34,7 @@ int main() {
 	int numSlots = rand() % 4 + 9;
 	slot* maquina = new slot[numSlots];
 	createVendingMachine(listaprodutos, listaprecos, maquina, numSlots);
+	fundos(moedas);
 
 	// Menu de opcoes
  	bool sair = false;
@@ -57,6 +58,7 @@ int main() {
 
 	// Finalização do programa
 	delete[](moedas);
+	delete[](maquina);
 	cin.sync();//manter consola aberta
 	cin.get(); //manter consola aberta
 	cin.ignore();
