@@ -11,6 +11,13 @@
 
 using namespace std;
 
+/* 
+NOTA:
+TEMOS QUE CORRIGIR OS PROBLEMAS COM O LOCALE
+senão as coisas ficam feias e dificeis de ler 
+*/
+
+
 int main() {
 	//inicialização
 	locale pt = pt.global(locale(""));

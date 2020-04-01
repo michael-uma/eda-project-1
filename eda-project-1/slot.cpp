@@ -1,7 +1,6 @@
 #include "slot.h"
 #include <iostream>
 #include <fstream>
-#define EURO "euros"
 
 void lerFicheiroProdutos(string* listaprodutos) {
     ifstream myFile("produtos.txt");
@@ -33,6 +32,11 @@ void lerFicheiroPrecos(float* listaprecos) {
     /*for (int j = 0; j < NUM_PRECOS; j++) {
         cout << listaprecos[j] << endl;
     }*/
+}
+
+bool slotVazio(slot slot) 
+{
+    return (slot.quantidade == 0);
 }
 
 char buscaCodigo(int i)
@@ -131,8 +135,6 @@ int buscaPos(char c)
 
 void createVendingMachine(string* produtos, float* precos, slot* maquina, int numSlots)
 {
-    /* int numSlots = rand() % 4 + 9;
-     slot* maquina = new slot[numSlots];*/
     int qProdutosMax, posProduto, posPreco;
 
     for (int i = 0; i < numSlots; i++) {
@@ -169,45 +171,7 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
         maquina[i].code = buscaCodigo(i);
         maquina[i].quantidadeMax = qProdutosMax;
         maquina[i].quantidade = maquina[i].quantidadeMax;
-
-        // print para testar
-        /*cout << "Slot : " << maquina[i].code << endl;
-        cout << "Produto : " << maquina[i].p.name << endl;
-        cout << "Preço : " << maquina[i].p.preco << " " << EURO << endl;
-        cout << "Quantidade : " << maquina[i].quantidade << "   | Capacidade : " << maquina[i].quantidadeMax << endl;
-        cout << "------------------------------\n" << endl;  */
-
-        // cout << "\nNúmero do slot: " << i << "\nposPreco = " << posPreco << "\nposProduto = " << posProduto << "\nqProdutosMax = " << qProdutosMax << "|\n" << endl;
     }
-
-    // Verificar se ocorreu duplos 
-    // Nota: Talvez arranjar uma melhor maneira de se fazer isto? mas acho que funcionou.
-    /*
-    string listaProdutosnoSlot[12];
-
-    for (int i = 0; i < numSlots; i++)
-        listaProdutosnoSlot[i] = maquina[i].p.name;
-
-    bool unico = true;
-    for (int i = 1; i < numSlots; i++) {
-        for (int j = 0; j < i; j++) {
-            if (listaProdutosnoSlot[i] == listaProdutosnoSlot[j]) {
-                // cout << i << endl; //ver onde existia duplicacao na posicao
-                for (int k = 0; k < NUM_PRODUTOS; k++) {
-                    for (int l = 0; l < numSlots; l++) {
-                        if (produtos[k] == listaProdutosnoSlot[l]) {
-                            unico = false;
-                        }
-                    }
-                    if (unico == true) {
-                        maquina[i].p.name = produtos[k];
-                        listaProdutosnoSlot[i] = maquina[i].p.name; // para poder atualizar o produto que foi alterado e que ja foi posto no slot!
-                    }
-                    unico = true;
-                }
-            }
-        }
-    }*/
 
     cout << "-------- Máquina de Vending: --------\n" << endl;
     // Output da máquina:

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#define EURO "euros"
 using namespace std;
 
 #define NUM_PRODUTOS 24
@@ -20,6 +21,8 @@ struct slot {
 void lerFicheiroProdutos(string* listaprodutos);
 
 void lerFicheiroPrecos(float* listaprecos);
+
+bool slotVazio(slot slot);
 
 char buscaCodigo(int i);
 

@@ -87,6 +87,41 @@ void imprimir_produtos(slot* maquina, int numSlots)
 	cout << endl;
 }
 
+void alterar_preco(slot* maquina, int numSlots) 
+{
+	string produtoInserido;
+	float novoPreco = 0.01;
+	cout << "\nQual é o produto cujo preço deseja alterar?" << endl;
+	cin.ignore(); // para limpar lixo que esteja no input
+
+	int posProduto = -1;
+	while (posProduto < 0) {
+		getline(std::cin, produtoInserido); // ler a linha -- é porcausa disto que precisamos do cin.ignore()
+		for (int i = 0; i < numSlots; i++)
+		{
+			if (produtoInserido == maquina[i].p.name)
+			{
+				posProduto = i;
+				break;
+			}
+		}
+		if (posProduto < 0) {
+			cout << "Produto inserido não foi encontrado na máquina. Por favor tente denovo." << endl;
+		}
+	}
+
+	cout << "O preço atual deste produto é: " << maquina[posProduto].p.preco << EURO << endl;
+	cout << "Insira o preço desejado para este produto: " << endl;
+	cin >> novoPreco;
+	while (int(novoPreco * 100) % 5 != 0 && novoPreco > 0) {
+		cout << "O preço inserido tem que ser positivo e múltiplo de 5 cêntimos. Tente denovo." << endl;
+		cin >> novoPreco;
+	}
+
+	// resultado
+	maquina[posProduto].p.preco = novoPreco;
+	cout << "Preco do produto " << maquina[posProduto].p.name << " alterado com sucesso." << endl;
+}
 
 void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vejam se altera alguns codigos!!! PQ ADICIONEI OUTRO ARGUMENTO!!!!
 {
@@ -110,7 +145,7 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		cin >> escolha_funcionario;
 
 		if (escolha_funcionario == 1) {
-			cout << "Escolheu limpar os slots! " << endl;
+			cout << "Escolheu limpar slots! " << endl;
 			//Qualquer coisa para limpar stock;
 		}
 		else if (escolha_funcionario == 2) {
@@ -123,7 +158,7 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		}
 		else if (escolha_funcionario == 4) {
 			cout << "Escolheu alterar preço(s)! " << endl;
-			//Qualquer coisa para alterar preço(s);
+			alterar_preco(maquina, numSlots);
 		}
 		else if (escolha_funcionario == 5) {
 			cout << "Escolheu adicionar slots! " << endl;
