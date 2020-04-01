@@ -190,5 +190,7 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		}
 		else
 			cout << "Por favor digite uma opção válida!";
+
+		verificarFundos(moedas);
 	}
 }

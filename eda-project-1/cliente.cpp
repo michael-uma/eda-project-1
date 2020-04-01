@@ -1,10 +1,14 @@
 #include "cliente.h"
 #include "slot.h"
+#include "dinheiro.h"
 #include <iostream>
 using namespace std;
 
 
-void menu_cliente(slot* maquina) {
+void menu_cliente(slot* maquina, int moedas[6]) {
+
+	verificarFundos(moedas);
+
 	char escolha_utilizador;
 	cout << "\n******* Bem-Vindo Cliente *******" << endl;
 	cout << "Introduza o código do produto: ";

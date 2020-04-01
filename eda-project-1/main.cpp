@@ -14,13 +14,13 @@ using namespace std;
 /* 
 NOTA:
 TEMOS QUE CORRIGIR OS PROBLEMAS COM O LOCALE
-senão as coisas ficam feias e dificeis de ler 
+senão as coisas ficam feias e dificeis de ler :p
 */
 
 
 int main() {
 	//inicialização
-	locale pt = pt.global(locale(""));
+	locale pt = pt.global(locale("")); // isto não dá por razão alguma
 	srand((unsigned)time(NULL));
 	int* moedas = new int[6];
 
@@ -45,7 +45,7 @@ int main() {
 		cin >> utilizador;
 
 		if (utilizador == 'c') {
-			menu_cliente(maquina);
+			menu_cliente(maquina, moedas);
 		}
 		else if (utilizador == 'f') {
 			menu_funcionario(maquina, moedas, numSlots);

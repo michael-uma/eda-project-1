@@ -15,27 +15,31 @@ void fundos(int moedas[6])
 	moedas[3] = rand() % 11 + 10; //de 10 a 20
 	moedas[4] = rand() % 11 + 10; //de 10 a 20
 	moedas[5] = rand() % 11 + 10; //de 10 a 20
-	if (moedas[0] <= 3 || moedas[1] <= 3 || moedas[2] <= 3 || moedas[3] <= 3 || moedas[4] <= 3 || moedas[5] <= 3) { //Este if para dizer apenas uma vez o ***AVISO***
-		cout << "******AVISO******" << endl;
-		if (moedas[0] <= 3) {
-			cout << "Existem apenas " << moedas[0] << " moedas de 2 euros" << endl;
-		}
-		else if (moedas[1] <= 3) {
-			cout << "Existem apenas " << moedas[1] << " moedas de 1 euros" << endl;
-		}
-		else if (moedas[2] <= 3) {
-			cout << "Existem apenas " << moedas[2] << " moedas de 50 centimos " << endl;
-		}
-		else if (moedas[3] <= 3) {
-			cout << "Existem apenas " << moedas[3] << " moedas de 20 centimos" << endl;
-		}
-		else if (moedas[4] <= 3) {
-			cout << "Existem apenas " << moedas[4] << " moedas de 10 centimos" << endl;
-		}
-		else if (moedas[5] <= 3) {
-			cout << "Existem apenas " << moedas[5] << " moedas de 5 centimos" << endl;
-		}
-	}
+
+	//if (moedas[0] <= 3 || moedas[1] <= 3 || moedas[2] <= 3 || moedas[3] <= 3 || moedas[4] <= 3 || moedas[5] <= 3) { //Este if para dizer apenas uma vez o ***AVISO***
+	//	cout << "******AVISO******" << endl;
+	//	if (moedas[0] <= 3) {
+	//		cout << "Existem apenas " << moedas[0] << " moedas de 2 euros" << endl;
+	//	}
+	//	else if (moedas[1] <= 3) {
+	//		cout << "Existem apenas " << moedas[1] << " moedas de 1 euros" << endl;
+	//	}
+	//	else if (moedas[2] <= 3) {
+	//		cout << "Existem apenas " << moedas[2] << " moedas de 50 centimos " << endl;
+	//	}
+	//	else if (moedas[3] <= 3) {
+	//		cout << "Existem apenas " << moedas[3] << " moedas de 20 centimos" << endl;
+	//	}
+	//	else if (moedas[4] <= 3) {
+	//		cout << "Existem apenas " << moedas[4] << " moedas de 10 centimos" << endl;
+	//	}
+	//	else if (moedas[5] <= 3) {
+	//		cout << "Existem apenas " << moedas[5] << " moedas de 5 centimos" << endl;
+	//	}
+	//}
+
+	verificarFundos(moedas);
+
 	/*cout << "***Antes***" << endl;
 	cout << "2 ->" << moedas[0] << endl;
 	cout << "1-> " << moedas[1] << endl;
@@ -45,13 +49,59 @@ void fundos(int moedas[6])
 	cout << "0.05-> " << moedas[5] << endl; //teste!!!*/
 }
 
+void verificarFundos(int moedas[6])
+{
+	if (moedas[0] <= 3 || moedas[1] <= 3 || moedas[2] <= 3 || moedas[3] <= 3 || moedas[4] <= 3 || moedas[5] <= 3) { //Este if para dizer apenas uma vez o ***AVISO***
+		cout << "******AVISO******\nExistem apenas:" << endl;
+		if (moedas[0] <= 3) {
+			cout << moedas[0] << " moedas de 2 euros." << endl;
+		}
+		if (moedas[1] <= 3) {
+			cout << moedas[1] << " moedas de 1 euros." << endl;
+		}
+		if (moedas[2] <= 3) {
+			cout << moedas[2] << " moedas de 50 cêntimos." << endl;
+		}
+		if (moedas[3] <= 3) {
+			cout << moedas[3] << " moedas de 20 cêntimos." << endl;
+		}
+		if (moedas[4] <= 3) {
+			cout << moedas[4] << " moedas de 10 cêntimos." << endl;
+		}
+		if (moedas[5] <= 3) {
+			cout << moedas[5] << " moedas de 5 cêntimos." << endl;
+		}
+	}
+}
+
 	void remover_fundos(int moedas[6])
 	{
-
 		int remover;
 		cout << "***Remover Fundos***"<<endl;
 		for (int i = 0; i < 6; i++) {
-			cout << "Quanto moedas euros deseja remover? "<<endl;
+			cout << "Quantas moedas de ";
+			switch (i) {
+			case 0:
+				cout << "2 euros";
+				break;
+			case 1:
+				cout << "1 euro";
+				break;
+			case 2:
+				cout << "50 cêntimos";
+				break;
+			case 3:
+				cout << "20 cêntimos";
+				break;
+			case 4:
+				cout << "10 cêntimos";
+				break;
+			case 5:
+				cout << "5 cêntimos";
+				break;
+			}
+			cout << " deseja remover?"<< endl;
+
 			cin >> remover;
 			while(moedas[i] - remover < 0){
 				//if (moedas[i] - remover < 0) {
@@ -107,7 +157,7 @@ void fundos(int moedas[6])
 				cin >> adicionar;
 				moedas[5] = moedas[5] + adicionar;
 			}
-
+			// verificar se o valor inserido foi positivo
 			if (adicionar < 0) {
 				cout << "Insira um valor positivo valor positivo!: " << endl;
 				j--;
