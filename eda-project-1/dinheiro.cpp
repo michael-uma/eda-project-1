@@ -16,28 +16,6 @@ void fundos(int moedas[6])
 	moedas[4] = rand() % 11 + 10; //de 10 a 20
 	moedas[5] = rand() % 11 + 10; //de 10 a 20
 
-	//if (moedas[0] <= 3 || moedas[1] <= 3 || moedas[2] <= 3 || moedas[3] <= 3 || moedas[4] <= 3 || moedas[5] <= 3) { //Este if para dizer apenas uma vez o ***AVISO***
-	//	cout << "******AVISO******" << endl;
-	//	if (moedas[0] <= 3) {
-	//		cout << "Existem apenas " << moedas[0] << " moedas de 2 euros" << endl;
-	//	}
-	//	else if (moedas[1] <= 3) {
-	//		cout << "Existem apenas " << moedas[1] << " moedas de 1 euros" << endl;
-	//	}
-	//	else if (moedas[2] <= 3) {
-	//		cout << "Existem apenas " << moedas[2] << " moedas de 50 centimos " << endl;
-	//	}
-	//	else if (moedas[3] <= 3) {
-	//		cout << "Existem apenas " << moedas[3] << " moedas de 20 centimos" << endl;
-	//	}
-	//	else if (moedas[4] <= 3) {
-	//		cout << "Existem apenas " << moedas[4] << " moedas de 10 centimos" << endl;
-	//	}
-	//	else if (moedas[5] <= 3) {
-	//		cout << "Existem apenas " << moedas[5] << " moedas de 5 centimos" << endl;
-	//	}
-	//}
-
 	verificarFundos(moedas);
 
 	/*cout << "***Antes***" << endl;
@@ -101,23 +79,23 @@ void verificarFundos(int moedas[6])
 				break;
 			}
 			cout << " deseja remover?"<< endl;
-
 			cin >> remover;
-			while(moedas[i] - remover < 0){
-				//if (moedas[i] - remover < 0) {
+
+			while(moedas[i] - remover < 0)
+			{
 				cout << "O numero de moedas sera negativo!!!! por favor digite outra vez o numero de moedas que pretende retirar: ";
 				cin >> remover;
-				}
+			}
 			moedas[i] = moedas[i] - remover;
 		}
 
 		cout << "***Fundos***" << endl;
 		cout << "2 euros ->" << moedas[0] << endl;
 		cout << "1 euros-> " << moedas[1] << endl;
-		cout << "50 centimos->" << moedas[2] << endl;
-		cout << "20 centimos-> " << moedas[3] << endl;
-		cout << "10 centimos -> " << moedas[4] << endl;
-		cout << "5 centimos-> " << moedas[5] << endl;
+		cout << "50 cêntimos->" << moedas[2] << endl;
+		cout << "20 cêntimos-> " << moedas[3] << endl;
+		cout << "10 cêntimos -> " << moedas[4] << endl;
+		cout << "5 cêntimos-> " << moedas[5] << endl;
 		cout << endl;
 
 	}

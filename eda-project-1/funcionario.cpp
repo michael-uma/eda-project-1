@@ -17,13 +17,10 @@ void imprimir_produtos(slot* maquina, int numSlots)
 	cin >> opcao;
 	cout << endl;
 
-	// variáveis e arrays usados no sort
+	// arrays usados no sort (para não mexer em maquina)
 	float* precos = new float[numSlots];
 	string* produtos = new string[numSlots];
 	int* quantidades = new int[numSlots];
-	float a1, b1; 
-	string a2, b2;
-	int a3, b3;
 
 	for (int i = 0; i < numSlots; i++) {
 		precos[i] = maquina[i].p.preco;
@@ -33,36 +30,27 @@ void imprimir_produtos(slot* maquina, int numSlots)
 
 	switch (opcao) {
 	case 1:
+		// ordenado alfabéticamente
 		sort(produtos, produtos + numSlots);
 		break;
 	case 2:
+		// ordenado pelo preço
 		for (int i = 1; i < numSlots; i++) {
 			for (int j = 0; j < i; j++) {
 				if (precos[i] < precos[j]) {
-					a1 = precos[j];
-					a2 = produtos[j];
-					b1 = precos[i];
-					b2 = produtos[i];
-					precos[j] = b1;
-					produtos[j] = b2;
-					precos[i] = a1;
-					produtos[i] = a2;
+					swap(precos[i], precos[j]);
+					swap(produtos[i], produtos[j]);
 				}
 			}
 		}
 		break;
 	case 3:
+		// ordenado pela quantidade disponível
 		for (int i = 1; i < numSlots; i++) {
 			for (int j = 0; j < i; j++) {
 				if (quantidades[i] < quantidades[j]) {
-					a3 = quantidades[j];
-					a2 = produtos[j];
-					b3 = quantidades[i];
-					b2 = produtos[i];
-					quantidades[j] = b3;
-					produtos[j] = b2;
-					quantidades[i] = a3;
-					produtos[i] = a2;
+					swap(quantidades[i], quantidades[j]);
+					swap(produtos[i], produtos[j]);
 				}
 			}
 		}
