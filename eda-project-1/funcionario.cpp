@@ -111,6 +111,89 @@ void alterar_preco(slot* maquina, int numSlots)
 	cout << "Preco do produto " << maquina[posProduto].p.name << " alterado com sucesso." << endl;
 }
 
+void gravarMaquinaSlots(slot* maquina, int numSlots, string fileName) {
+	fstream file;
+	file.open(fileName, ios::out);
+	if (file.is_open()) {
+		for (int i = 0; i < numSlots; i++) {
+			file << maquina[i].code << endl;
+			file << maquina[i].p.name << endl;
+			file << maquina[i].p.preco << endl;
+			file << maquina[i].quantidade << endl;
+			file << maquina[i].quantidadeMax << endl;
+			file << "-" << endl;
+		}
+		file.close();
+	}
+	else
+		cout << "Erro ao abrir o ficheiro  guardadoSlots" << endl;
+}
+
+void gravarMaquinanumSlots(slot* maquina, int numSlots, string fileName) {
+	fstream file;
+	file.open(fileName, ios::out);
+	if (file.is_open()) {
+		file << numSlots << endl;
+		file.close();
+	}
+	else
+		cout << "Erro ao abrir o ficheiro  guardadoNumslots" << endl;
+}
+
+void gravarMaquinaMoedas(slot* maquina, string fileName, int moedas[]) {
+	fstream file;
+	file.open(fileName, ios::out);
+	if (file.is_open()) {
+		for (int j = 0; j < 6; j++) {
+			file << moedas[j] << endl;
+		}
+		file.close();
+	}
+	else
+		cout << "Erro ao abrir o ficheiro  guardadoMoedas" << endl;
+}
+
+void carregarMaquinanumSlots(slot* maquina, int numSlots, string fileName) {
+	ifstream myFile(fileName);
+	string line = "";
+	if (myFile.is_open()) {  //verificar se o ficheiro existe
+		while (getline(myFile, line)) {
+			const char* data = line.c_str();
+			numSlots = stoi(data);
+		}
+	}
+	myFile.close();
+}
+
+void carregarMaquinaMoedas(slot* maquina, string fileName, int moedas[]) {
+	ifstream myFile(fileName);
+	string line = "";
+	int i = 0;
+	if (myFile.is_open()) {  //verificar se o ficheiro existe
+		while (getline(myFile, line)) {
+			const char* data = line.c_str();
+			moedas[i] = stoi(data);
+			i++;
+		}
+	}
+	myFile.close();
+}
+
+//INCOMPLETO
+//void carregarMaquinaSlots(slot* maquina, int numSlots, string fileName) {
+//	ifstream myFile(fileName);
+//	string line = "";
+//	int i = 0;
+//	if (myFile.is_open()) {  //verificar se o ficheiro existe
+//		while (getline(myFile, line)) {
+//			const char* data = line.c_str();
+//			moedas[i] = stoi(data);
+//			i++;
+//		}
+//	}
+//	myFile.close();
+//}
+
 void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vejam se altera alguns codigos!!! PQ ADICIONEI OUTRO ARGUMENTO!!!!
 {
 	bool sair = false;
@@ -162,11 +245,15 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		}
 		else if (escolha_funcionario == 8) {
 			cout << "Escolheu gravar máquina" << endl;
-			//Qualquer coisa para gravar máquina;
+			gravarMaquinaSlots(maquina, numSlots, "guardadoSlots.txt");
+			gravarMaquinanumSlots(maquina, numSlots, "guardadoNumslots.txt");
+			gravarMaquinaMoedas(maquina,"guardadoMoedas.txt",moedas);
 		}
 		else if (escolha_funcionario == 9) {
 			cout << "Escolheu carregar máquina! " << endl;
-			//Qualquer coisa para carregar máquina;
+			//carregarMaquinanumSlots(maquina, numSlots, "guardadoNumslots.txt");
+			carregarMaquinaMoedas(maquina, "guardadoMoedas.txt", moedas);
+			//falta carregarmaquinaslots;
 		}
 		else if (escolha_funcionario == 10) {
 			cout << "Escolheu remover os trocos! " << endl;
