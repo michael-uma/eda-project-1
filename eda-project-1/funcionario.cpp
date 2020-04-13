@@ -122,7 +122,6 @@ void gravarMaquinaSlots(slot* maquina, int numSlots, string fileName) {
 			file << maquina[i].p.preco << endl;
 			file << maquina[i].quantidade << endl;
 			file << maquina[i].quantidadeMax << endl;
-			file << "-" << endl;
 		}
 		file.close();
 	}
@@ -180,20 +179,26 @@ void carregarMaquinaMoedas(slot* maquina, string fileName, int moedas[]) {
 	myFile.close();
 }
 
-//INCOMPLETO
-//void carregarMaquinaSlots(slot* maquina, int numSlots, string fileName) {
-//	ifstream myFile(fileName);
-//	string line = "";
-//	int i = 0;
-//	if (myFile.is_open()) {  //verificar se o ficheiro existe
-//		while (getline(myFile, line)) {
-//			const char* data = line.c_str();
-//			moedas[i] = stoi(data);
-//			i++;
-//		}
-//	}
-//	myFile.close();
-//}
+void carregarMaquinaSlots(slot* maquina, int numSlots, string fileName) {
+	ifstream myFile(fileName);
+	string line = "";
+	if (myFile.is_open()) {
+		for (int i = 0, i<numSlots , i++) {
+			getline(myFile, line);
+			const char* data = line.c_str();
+			maquina[i].code = (char) data;
+			getline(myFile, line);
+			maquina[i].p.name = line;
+			getline(myFile, line);
+			maquina[i].p.preco = stof(line);
+			getline(myFile, line);
+			maquina[i].quantidade = stoi(line);
+			getline(myFile, line);
+			maquina[i].quantidadeMax = stoi(line);
+		}
+	}
+	myFile.close();
+}
 
 void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vejam se altera alguns codigos!!! PQ ADICIONEI OUTRO ARGUMENTO!!!!
 {
@@ -252,9 +257,9 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		}
 		else if (escolha_funcionario == 9) {
 			cout << "Escolheu carregar máquina! " << endl;
-			//carregarMaquinanumSlots(maquina, numSlots, "guardadoNumslots.txt");
+			carregarMaquinanumSlots(maquina, numSlots, "guardadoNumslots.txt");
 			carregarMaquinaMoedas(maquina, "guardadoMoedas.txt", moedas);
-			//falta carregarmaquinaslots;
+			carregarMaquinaSlots(maquina, numSlots, "guardadoSlots.txt");
 		}
 		else if (escolha_funcionario == 10) {
 			cout << "Escolheu remover os trocos! " << endl;
