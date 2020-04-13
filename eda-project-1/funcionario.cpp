@@ -183,7 +183,7 @@ void carregarMaquinaSlots(slot* maquina, int numSlots, string fileName) {
 	ifstream myFile(fileName);
 	string line = "";
 	if (myFile.is_open()) {
-		for (int i = 0, i<numSlots , i++) {
+		for (int i = 0; i<numSlots ; i++) {
 			getline(myFile, line);
 			const char* data = line.c_str();
 			maquina[i].code = (char) data;
