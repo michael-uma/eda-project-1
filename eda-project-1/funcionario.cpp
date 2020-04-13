@@ -3,7 +3,8 @@
 #include "slot.h"
 #include <algorithm>
 #include <locale>
-#include<iostream>
+#include <iostream>
+#include <fstream>
 using namespace std;
 
 
