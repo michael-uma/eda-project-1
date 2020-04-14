@@ -179,13 +179,12 @@ void carregarMaquinaMoedas(slot* maquina, string fileName, int moedas[]) {
 void carregarMaquinaSlots(slot* maquina, int numSlots, string fileName) {
 	ifstream myFile(fileName);
 	string line = "";
-	char c[1];
 	if (myFile.is_open()) {
 		for (int i = 0; i<numSlots ; i++) {
 			getline(myFile, line);
-			//int n = line.length();
-			//strcpy_s(c, line.c_str());
-			//maquina[i].code = c[0];
+			const char* cstr = line.c_str();
+			char* coding = const_cast<char*> (cstr);
+			maquina[i].code = coding[0];
 			getline(myFile, line);
 			maquina[i].p.name = line;
 			getline(myFile, line);
@@ -195,7 +194,6 @@ void carregarMaquinaSlots(slot* maquina, int numSlots, string fileName) {
 			getline(myFile, line);
 			maquina[i].quantidadeMax = stoi(line);
 		}
-		//delete[] c;
 	}
 	myFile.close();
 }
