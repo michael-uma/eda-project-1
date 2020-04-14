@@ -3,7 +3,7 @@
 #include "slot.h"
 #include <algorithm>
 #include <locale>
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 
@@ -28,6 +28,8 @@ void imprimir_produtos(slot* maquina, int numSlots)
 		quantidades[i] = maquina[i].quantidade;
 	}
 
+	bool swapped = true;
+
 	switch (opcao) {
 	case 1:
 		// ordenado alfabéticamente
@@ -35,22 +37,26 @@ void imprimir_produtos(slot* maquina, int numSlots)
 		break;
 	case 2:
 		// ordenado pelo preço
-		for (int i = 1; i < numSlots; i++) {
+		for (int i = 1; i < numSlots && swapped; i++) {
 			for (int j = 0; j < i; j++) {
+				swapped = false;
 				if (precos[i] < precos[j]) {
 					swap(precos[i], precos[j]);
 					swap(produtos[i], produtos[j]);
+					swapped = true;
 				}
 			}
 		}
 		break;
 	case 3:
 		// ordenado pela quantidade disponível
-		for (int i = 1; i < numSlots; i++) {
+		for (int i = 1; i < numSlots && swapped; i++) {
 			for (int j = 0; j < i; j++) {
+				swapped = false;
 				if (quantidades[i] < quantidades[j]) {
 					swap(quantidades[i], quantidades[j]);
 					swap(produtos[i], produtos[j]);
+					swapped = true;
 				}
 			}
 		}

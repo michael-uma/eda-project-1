@@ -1,6 +1,7 @@
 #include <iostream>
-#include<stdlib.h>
-#include<time.h>
+#include <locale>
+#include <stdlib.h>
+#include <time.h>
 #include "dinheiro.h"
 #include "funcionario.h"
 using namespace std;
@@ -77,19 +78,21 @@ void verificarFundos(int moedas[6])
 			case 5:
 				cout << "5 cêntimos";
 				break;
+			default:
+				break;
 			}
 			cout << " deseja remover?"<< endl;
 			cin >> remover;
-
+			
 			while(moedas[i] - remover < 0)
 			{
-				cout << "O numero de moedas sera negativo!!!! por favor digite outra vez o numero de moedas que pretende retirar: ";
+				cout << "O numero de moedas sera negativo/inválido! Por favor digite outra vez o numero de moedas que pretende retirar: ";
 				cin >> remover;
 			}
 			moedas[i] = moedas[i] - remover;
 		}
 
-		cout << "***Fundos***" << endl;
+		cout << "*** Fundos ***" << endl;
 		cout << "2 euros ->" << moedas[0] << endl;
 		cout << "1 euros-> " << moedas[1] << endl;
 		cout << "50 cêntimos->" << moedas[2] << endl;
@@ -103,7 +106,7 @@ void verificarFundos(int moedas[6])
 
 	void carregar_moedas(int moedas[6]) {
 		int adicionar = -1;
-		cout << "***Carregar moedas***" << endl;
+		cout << "*** Carregar moedas ***" << endl;
 		for (int j = 0; j < 6; j++) {
 			if (j == 0) {
 				cout << "Quantas moedas de 2 euros deseja adicionar: " << endl;
@@ -116,22 +119,22 @@ void verificarFundos(int moedas[6])
 				moedas[1] = moedas[1] + adicionar;
 			}
 			else if (j == 2) {
-				cout << "Quantas moedas de 50 centimos deseja adicionar: " << endl;
+				cout << "Quantas moedas de 50 cêntimos deseja adicionar: " << endl;
 				cin >> adicionar;
 				moedas[2] = moedas[2] + adicionar;
 			}
 			else if (j == 3) {
-				cout << "Quantas moedas de 20 centimos deseja adicionar: " << endl;
+				cout << "Quantas moedas de 20 cêntimos deseja adicionar: " << endl;
 				cin >> adicionar;
 				moedas[3] = moedas[3] + adicionar;
 			}
 			else if (j == 4) {
-				cout << "Quantas moedas de 10 centimos deseja adicionar: " << endl;
+				cout << "Quantas moedas de 10 cêntimos deseja adicionar: " << endl;
 				cin >> adicionar;
 				moedas[4] = moedas[4] + adicionar;
 			}
 			else if (j == 5) {
-				cout << "Quantas moedas de 5 centimos deseja adicionar: " << endl;
+				cout << "Quantas moedas de 5 cêntimos deseja adicionar: " << endl;
 				cin >> adicionar;
 				moedas[5] = moedas[5] + adicionar;
 			}
