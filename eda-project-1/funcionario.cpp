@@ -153,16 +153,13 @@ void gravarMaquinaMoedas(slot* maquina, string fileName, int moedas[]) {
 		cout << "Erro ao abrir o ficheiro  guardadoMoedas" << endl;
 }
 
-void carregarMaquinanumSlots(slot* maquina, int numSlots, string fileName) {
+int carregarMaquinanumSlots(slot* maquina, int numSlots, string fileName) {
 	ifstream myFile(fileName);
 	string line = "";
-	if (myFile.is_open()) {  //verificar se o ficheiro existe
-		while (getline(myFile, line)) {
-			const char* data = line.c_str();
-			numSlots = stoi(data);
-		}
-	}
+	if (myFile.is_open())  //verificar se o ficheiro existe
+		getline(myFile, line);
 	myFile.close();
+	return stoi(line);
 }
 
 void carregarMaquinaMoedas(slot* maquina, string fileName, int moedas[]) {
@@ -182,11 +179,13 @@ void carregarMaquinaMoedas(slot* maquina, string fileName, int moedas[]) {
 void carregarMaquinaSlots(slot* maquina, int numSlots, string fileName) {
 	ifstream myFile(fileName);
 	string line = "";
+	char c[1];
 	if (myFile.is_open()) {
 		for (int i = 0; i<numSlots ; i++) {
 			getline(myFile, line);
-			const char* data = line.c_str();
-			maquina[i].code = (char) data;
+			//int n = line.length();
+			//strcpy_s(c, line.c_str());
+			//maquina[i].code = c[0];
 			getline(myFile, line);
 			maquina[i].p.name = line;
 			getline(myFile, line);
@@ -196,6 +195,7 @@ void carregarMaquinaSlots(slot* maquina, int numSlots, string fileName) {
 			getline(myFile, line);
 			maquina[i].quantidadeMax = stoi(line);
 		}
+		//delete[] c;
 	}
 	myFile.close();
 }
@@ -257,9 +257,17 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		}
 		else if (escolha_funcionario == 9) {
 			cout << "Escolheu carregar máquina! " << endl;
-			carregarMaquinanumSlots(maquina, numSlots, "guardadoNumslots.txt");
+			numSlots = carregarMaquinanumSlots(maquina, numSlots, "guardadoNumslots.txt");
 			carregarMaquinaMoedas(maquina, "guardadoMoedas.txt", moedas);
 			carregarMaquinaSlots(maquina, numSlots, "guardadoSlots.txt");
+			cout << numSlots << endl;
+			for (int i = 0; i < numSlots; i++) {
+				cout << "Slot : " << maquina[i].code << endl;
+				cout << "Produto : " << maquina[i].p.name << endl;
+				cout << "Preço : " << maquina[i].p.preco << " " << EURO << endl;
+				cout << "Quantidade : " << maquina[i].quantidade << "   | Capacidade : " << maquina[i].quantidadeMax << endl;
+				cout << "------------------------------\n" << endl;
+			}
 		}
 		else if (escolha_funcionario == 10) {
 			cout << "Escolheu remover os trocos! " << endl;
