@@ -20,7 +20,8 @@ senão as coisas ficam feias e dificeis de ler :p
 
 int main() {
 	//inicialização
-	// locale pt = pt.global(locale("")); // isto não dá por razão alguma
+	// locale pt = pt.global(locale(""));
+	// locale pt = pt.global(locale("pt-PT.UTF8")); // <-- isto quase que dá, mas causa com que outros couts não consigam imprimir. não sei
 	locale::global(locale(""));
 	srand((unsigned)time(NULL));
 	int* moedas = new int[6];

@@ -32,15 +32,24 @@ void imprimir_produtos(slot* maquina, int numSlots)
 	bool swapped = true;
 
 	switch (opcao) {
+		// usando bubble sorts
 	case 1:
 		// ordenado alfabéticamente
-		sort(produtos, produtos + numSlots);
+		for (int i = 0; i < numSlots - 1 && swapped; i++) {
+			swapped = false; 
+			for (int j = numSlots - 1; j > i; j--) {
+				if (produtos[j] < produtos[j-1]) {
+					swap(produtos[j], produtos[j-1]);
+					swapped = true;
+				}
+			}
+		}
 		break;
 	case 2:
 		// ordenado pelo preço
-		for (int i = 1; i < numSlots && swapped; i++) {
-			for (int j = 0; j < i; j++) {
-				swapped = false;
+		for (int i = 1; i < numSlots - 1 && swapped; i++) {
+			swapped = false;
+			for (int j = numSlots - 1; j > i; j--) {
 				if (precos[i] < precos[j]) {
 					swap(precos[i], precos[j]);
 					swap(produtos[i], produtos[j]);
@@ -51,9 +60,9 @@ void imprimir_produtos(slot* maquina, int numSlots)
 		break;
 	case 3:
 		// ordenado pela quantidade disponível
-		for (int i = 1; i < numSlots && swapped; i++) {
-			for (int j = 0; j < i; j++) {
-				swapped = false;
+		for (int i = 1; i < numSlots - 1 && swapped; i++) {
+			swapped = false;
+			for (int j = numSlots - 1; j > i; j--) {
 				if (quantidades[i] < quantidades[j]) {
 					swap(quantidades[i], quantidades[j]);
 					swap(produtos[i], produtos[j]);

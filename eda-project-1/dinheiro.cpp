@@ -144,4 +144,6 @@ void verificarFundos(int moedas[6])
 				j--;
 			}
 		}
+		cout << "** Moedas carregadas com sucesso **";
+		verificarFundos(moedas);
 	}
