@@ -12,6 +12,6 @@ void gravarMaquinaSlots(slot* maquina, int numSlots, string fileName);
 void gravarMaquinanumSlots(slot* maquina, int numSlots, string fileName);
 void gravarMaquinaMoedas(slot* maquina, string fileName, int moedas[]);
 
-int carregarMaquinanumSlots(slot* maquina, int numSlots, string fileName);
+int carregarMaquinanumSlots(int numSlots, string fileName);
 void carregarMaquinaMoedas(slot* maquina, string fileName, int moedas[]);
 void carregarMaquinaSlots(slot* maquina, int numSlots, string fileName);
