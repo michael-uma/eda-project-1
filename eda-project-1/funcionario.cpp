@@ -168,7 +168,7 @@ void gravarMaquinaMoedas(slot* maquina, string fileName, int moedas[]) {
 		cout << "Erro ao abrir o ficheiro  guardadoMoedas" << endl;
 }
 
-int carregarMaquinanumSlots(slot* maquina, int numSlots, string fileName) {
+int carregarMaquinanumSlots(int numSlots, string fileName) {
 	ifstream myFile(fileName);
 	string line = "";
 	if (myFile.is_open())  //verificar se o ficheiro existe
@@ -270,10 +270,16 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		}
 		else if (escolha_funcionario == 9) {
 			cout << "Escolheu carregar máquina! " << endl;
-			numSlots = carregarMaquinanumSlots(maquina, numSlots, "guardadoNumslots.txt");
+			int novonumSlots = carregarMaquinanumSlots(numSlots, "guardadoNumslots.txt");
+			int tempnum = numSlots;
+			numSlots = novonumSlots;
 			carregarMaquinaMoedas(maquina, "guardadoMoedas.txt", moedas);
+			slot* maquinacarregada = new slot[numSlots];
+			slot* temp = maquina;
+			maquina = maquinacarregada;
+			delete[] temp;
 			carregarMaquinaSlots(maquina, numSlots, "guardadoSlots.txt");
-			cout << numSlots << endl;
+			//cout << numSlots << endl;
 			for (int i = 0; i < numSlots; i++) {
 				cout << "Slot : " << maquina[i].code << endl;
 				cout << "Produto : " << maquina[i].p.name << endl;
