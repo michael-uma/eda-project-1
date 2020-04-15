@@ -47,7 +47,7 @@ int main() {
 		cin >> utilizador;
 
 		if (utilizador == 'c') {
-			menu_cliente(maquina, moedas);
+			menu_cliente(maquina, moedas, numSlots);
 		}
 		else if (utilizador == 'f') {
 			menu_funcionario(maquina, moedas, numSlots);
