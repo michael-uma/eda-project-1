@@ -83,14 +83,14 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 					}
 					cout << "5 centimos: " << f - moedas[5] << endl;
 				}
-				/*cout << "*** Fundos ***" << endl;
+				cout << "*** Fundos ***" << endl;
 				cout << "2 euros ->" << moedas[0] << endl;
 				cout << "1 euros-> " << moedas[1] << endl;
 				cout << "50 centimos->" << moedas[2] << endl;
 				cout << "20 centimos-> " << moedas[3] << endl;
 				cout << "10 centimos -> " << moedas[4] << endl;
 				cout << "5 centimos-> " << moedas[5] << endl;
-				cout << endl;*/
+				cout << endl;
 			}
 			break;
 		}
