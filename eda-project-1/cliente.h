@@ -2,4 +2,4 @@
 #include <locale>
 #include "slot.h"
 
-void menu_cliente(slot* maquina, int moedas[6]);
+void menu_cliente(slot* maquina, int moedas[6], int numSlots);
