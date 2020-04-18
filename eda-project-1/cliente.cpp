@@ -16,7 +16,7 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 	while (!sair ||  (0 <= buscaPos(escolha_utilizador) && buscaPos(escolha_utilizador) < numSlots)) {
 		int pos_escolha = buscaPos(escolha_utilizador);
 		if (pos_escolha > numSlots-1) {
-			cout << "Por favor digite o código válido!";
+			cout << "Por favor digite o código válido!" << endl;
 			//cout << numSlots << endl;
 			cin >> escolha_utilizador;
 		}
@@ -31,9 +31,9 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 				cout << "Introduza a quantidade de moedas de " << tiposMoedas[i] << ":";
 				cin >> quantMoedas[i];
 			}
-			float custocliente = quantMoedas[0] * 2 + quantMoedas[1] * 1 + quantMoedas[2] * 0.50 + quantMoedas[3] * 0.20 + quantMoedas[4] * 0.10 + quantMoedas[5] * 0.05;
+			double custocliente = (double) quantMoedas[0] * 2 + quantMoedas[1] * 1 + quantMoedas[2] * 0.50 + quantMoedas[3] * 0.20 + quantMoedas[4] * 0.10 + quantMoedas[5] * 0.05;
 			if (custocliente < maquina[pos_escolha].p.preco) {
-				cout << "Produto nao devolvido! Troco devolvido!" << endl;
+				cout << "\nProduto nao devolvido! Troco devolvido!" << endl;
 			}
 			else if (maquina[pos_escolha].quantidade == 0) {
 				cout << "Slot Vazio! Troco devolvido!" << endl;
@@ -41,8 +41,8 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 			else
 			{
 				maquina[pos_escolha].quantidade -= 1;
-				cout << "Produto devolvido! Obrigado!" << endl;
-				float restomoedas = custocliente - maquina[pos_escolha].p.preco;
+				cout << "\nProduto devolvido! Obrigado!" << endl;
+				double restomoedas = custocliente - maquina[pos_escolha].p.preco;
 				//cout << "TROCO: " << restomoedas << endl;
 				int a = moedas[0];
 				int b = moedas[1];
@@ -76,7 +76,7 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 						restomoedas -= 0.05;
 					}
 				}
-				cout << "**TROCO**" << endl;
+				cout << "\n**TROCO**" << endl;
 				cout << "2 euros: " << a - moedas[0] << " | ";
 				cout << "1 euro: " << b - moedas[1] << " | ";
 				cout << "50 centimos: " << c - moedas[2] << " | ";
