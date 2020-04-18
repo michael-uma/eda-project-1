@@ -38,12 +38,21 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 			else if (maquina[pos_escolha].quantidade == 0) {
 				cout << "Slot Vazio! Troco devolvido!" << endl;
 			}
+			else if (VerificarAviso(moedas)) {
+				cout << "De momento a máquina tem poucas moedas! Produto nao devolvido! Troco devolvido!" << endl;
+			}
 			else
 			{
 				maquina[pos_escolha].quantidade -= 1;
 				cout << "\nProduto devolvido! Obrigado!" << endl;
 				double restomoedas = custocliente - maquina[pos_escolha].p.preco;
 				//cout << "TROCO: " << restomoedas << endl;
+				moedas[0] = moedas[0] + quantMoedas[0];
+				moedas[1] = moedas[1] + quantMoedas[1];
+				moedas[2] = moedas[2] + quantMoedas[2];
+				moedas[3] = moedas[3] + quantMoedas[3];
+				moedas[4] = moedas[4] + quantMoedas[4];
+				moedas[5] = moedas[5] + quantMoedas[5];
 				int a = moedas[0];
 				int b = moedas[1];
 				int c = moedas[2];
@@ -93,6 +102,7 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 				cout << "5 centimos-> " << moedas[5] << endl;
 				cout << endl;
 			}
+			VerificarVazio(maquina, numSlots);
 			cout << "-------- Máquina de Vending: --------\n" << endl;
 			// Output da máquina:
 			for (int i = 0; i < numSlots; i++) {
