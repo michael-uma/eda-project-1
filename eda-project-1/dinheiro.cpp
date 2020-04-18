@@ -169,3 +169,10 @@ void remover_fundos(int moedas[6])
 		cout << "5 cêntimos-> " << moedas[5] << endl;
 		cout << endl;
 	}
+
+	bool VerificarAviso(int moedas[6]) {
+		bool aviso = false;
+		if (moedas[0] <= 3 || moedas[1] <= 3 || moedas[2] <= 3 || moedas[3] <= 3 || moedas[4] <= 3 || moedas[5] <= 3)
+			aviso = true;
+		return aviso;
+	}
