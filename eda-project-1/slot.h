@@ -24,6 +24,10 @@ void lerFicheiroPrecos(float* listaprecos);
 
 bool slotVazio(slot slot);
 
+
+void VerificarVazio(slot* maquina, int numSlots);
+
+
 char buscaCodigo(int i);
 
 int buscaPos(char c);
