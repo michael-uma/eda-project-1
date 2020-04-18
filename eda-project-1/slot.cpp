@@ -39,6 +39,15 @@ bool slotVazio(slot slot)
     return (slot.quantidade == 0);
 }
 
+void VerificarVazio(slot* maquina, int numSlots) {
+    for (int i = 0; i < numSlots; i++) {
+        if (slotVazio(maquina[i])) {
+            maquina[i].p.name = "Vazio";
+            maquina[i].p.preco = 0.00;
+        }
+    }
+}
+
 char buscaCodigo(int i)
 {
     char c;
@@ -127,7 +136,7 @@ int buscaPos(char c)
         i = 11;
         break;
     default:
-        i = -1;
+        i = 100;
         break;
     }
     return i;
@@ -143,7 +152,7 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
         posPreco = rand() % NUM_PRECOS;
         posProduto = rand() % NUM_PRODUTOS;
 
-        // Verificar se o produto escolhido já está noutro slot da máquina:
+        // Verificar se o produto escolhido jÃ¡ estÃ¡ noutro slot da mÃ¡quina:
 
         bool unico = true;
         while (unico) {
@@ -173,12 +182,12 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
         maquina[i].quantidade = maquina[i].quantidadeMax;
     }
 
-    cout << "-------- Máquina de Vending: --------\n" << endl;
-    // Output da máquina:
+    cout << "-------- MÃ¡quina de Vending: --------\n" << endl;
+    // Output da mÃ¡quina:
     for (int i = 0; i < numSlots; i++) {
         cout << "Slot : " << maquina[i].code << endl;
         cout << "Produto : " << maquina[i].p.name << endl;
-        cout << "Preço : " << maquina[i].p.preco << " " << EURO << endl;
+        cout << "PreÃ§o : " << maquina[i].p.preco << " " << EURO << endl;
         cout << "Quantidade : " << maquina[i].quantidade << "   | Capacidade : " << maquina[i].quantidadeMax << endl;
         cout << "------------------------------\n" << endl;
     }
