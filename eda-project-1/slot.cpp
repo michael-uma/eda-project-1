@@ -128,6 +128,7 @@ int buscaPos(slot* maquina, int numSlots, char c) {
     return -1;
 }
 
+/* isto é o antigo buscaPos, comentado para caso de ser necessário referenciar para corrigir bugs no futuro */
 //int OLD_buscaPos(char c)
 //{
 //    int i;
