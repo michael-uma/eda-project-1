@@ -26,7 +26,6 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 			int* quantMoedas = new int[6];
 
 			for (int i = 0; i < 6; i++) {
-
 				cout << "Introduza a quantidade de moedas de " << tiposMoedas[i] << ":";
 				cin >> quantMoedas[i];
 			}

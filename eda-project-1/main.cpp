@@ -11,14 +11,6 @@
 
 using namespace std;
 
-/* 
-NOTA:
-TEMOS QUE CORRIGIR OS PROBLEMAS COM O LOCALE
-senão as coisas ficam feias e dificeis de ler :p
-
-UPDATE:
-possivelmente corrigido? teremos que testar um pouco mais só para ter certeza
-*/
 
 int numSlots; // variável global -- utilizada para atualizar o numSlots para qualquer situação
 int main() {
@@ -28,8 +20,8 @@ int main() {
 	int* moedas = new int[6];
 
 	// Para guardar todos os produtos e preços em arrays.
-	float listaprecos[NUM_PRECOS];
-	string listaprodutos[NUM_PRODUTOS];
+	float* listaprecos = new float[NUM_PRECOS];
+	string* listaprodutos = new string[NUM_PRODUTOS];
 	lerFicheiroPrecos(listaprecos);
 	lerFicheiroProdutos(listaprodutos);
 
@@ -37,7 +29,10 @@ int main() {
 	numSlots = rand() % 4 + 9;
 	slot* maquina = new slot[100];
 	createVendingMachine(listaprodutos, listaprecos, maquina, numSlots);
+	delete[](listaprecos);
+	delete[](listaprodutos);
 	cria_fundos(moedas);
+
 
 	// Menu de opcoes
  	bool sair = false;

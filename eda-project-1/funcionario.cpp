@@ -260,8 +260,6 @@ void adicionarSlot(slot* maquinaslot, int numSlots) {
 	maquinaslot[numSlots].p.name = "Vazio";
 	maquinaslot[numSlots].p.preco = 0;
 	maquinaslot[numSlots].quantidade = 0;
-	// retorna para atualizar a máquina
-	// return maquinaslot;
 }
 
 
@@ -279,7 +277,7 @@ void limparMaquina(slot* maquina, int numSlots) {
 //	char slot;
 //	int num;
 //	string nome;
-//	cout << "Qual o slot para adicionar um produto?" << endl;
+//	cout << "Qual o código do slot para adicionar um produto?" << endl;
 //	cin >> slot;
 //	cout << endl;
 //	cout << "Qual o numero de produtos a repor?" << endl;

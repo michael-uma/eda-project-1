@@ -1,7 +1,7 @@
 #pragma once
 #include "dinheiro.h"
 #include "slot.h"
-extern int numSlots;
+extern int numSlots; // para reconhecimento da variável global
 
 void menu_funcionario(slot* maquina, int moedas[6], int numSlots);
 
