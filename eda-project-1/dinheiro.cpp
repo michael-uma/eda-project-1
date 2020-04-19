@@ -89,51 +89,51 @@ void remover_fundos(int moedas[6])
 }
 
 
-	void carregar_moedas(int moedas[6]) {
-		//TEMOS QUE VER ANTES O FUNDOS PARA PODER CARREGAR
-		imprimeFundos(moedas);
-		int adicionar = -1;
-		cout << "*** Carregar moedas ***" << endl;
-		for (int j = 0; j < 6; j++) {
-			if (j == 0) {
-				cout << "Quantas moedas de 2 euros deseja adicionar: " << endl;
-				cin >> adicionar;
-				moedas[0] = moedas[0] + adicionar;
-			}
-			else if (j == 1) {
-				cout << "Quantas moedas de 1 euro deseja adicionar: " << endl;
-				cin >> adicionar;
-				moedas[1] = moedas[1] + adicionar;
-			}
-			else if (j == 2) {
-				cout << "Quantas moedas de 50 cêntimos deseja adicionar: " << endl;
-				cin >> adicionar;
-				moedas[2] = moedas[2] + adicionar;
-			}
-			else if (j == 3) {
-				cout << "Quantas moedas de 20 cêntimos deseja adicionar: " << endl;
-				cin >> adicionar;
-				moedas[3] = moedas[3] + adicionar;
-			}
-			else if (j == 4) {
-				cout << "Quantas moedas de 10 cêntimos deseja adicionar: " << endl;
-				cin >> adicionar;
-				moedas[4] = moedas[4] + adicionar;
-			}
-			else if (j == 5) {
-				cout << "Quantas moedas de 5 cêntimos deseja adicionar: " << endl;
-				cin >> adicionar;
-				moedas[5] = moedas[5] + adicionar;
-			}
-			// verificar se o valor inserido foi positivo
-			if (adicionar < 0) {
-				cout << "Insira um valor positivo!: " << endl;
-				j--;
-			}
+void carregar_moedas(int moedas[6]) {
+	//TEMOS QUE VER ANTES O FUNDOS PARA PODER CARREGAR
+	imprimeFundos(moedas);
+	int adicionar = -1;
+	cout << "*** Carregar moedas ***" << endl;
+	for (int j = 0; j < 6; j++) {
+		if (j == 0) {
+			cout << "Quantas moedas de 2 euros deseja adicionar: " << endl;
+			cin >> adicionar;
+			moedas[0] = moedas[0] + adicionar;
 		}
-		cout << "** Moedas carregadas com sucesso **";
-		imprimeFundos(moedas);
+		else if (j == 1) {
+			cout << "Quantas moedas de 1 euro deseja adicionar: " << endl;
+			cin >> adicionar;
+			moedas[1] = moedas[1] + adicionar;
+		}
+		else if (j == 2) {
+			cout << "Quantas moedas de 50 cêntimos deseja adicionar: " << endl;
+			cin >> adicionar;
+			moedas[2] = moedas[2] + adicionar;
+		}
+		else if (j == 3) {
+			cout << "Quantas moedas de 20 cêntimos deseja adicionar: " << endl;
+			cin >> adicionar;
+			moedas[3] = moedas[3] + adicionar;
+		}
+		else if (j == 4) {
+			cout << "Quantas moedas de 10 cêntimos deseja adicionar: " << endl;
+			cin >> adicionar;
+			moedas[4] = moedas[4] + adicionar;
+		}
+		else if (j == 5) {
+			cout << "Quantas moedas de 5 cêntimos deseja adicionar: " << endl;
+			cin >> adicionar;
+			moedas[5] = moedas[5] + adicionar;
+		}
+		// verificar se o valor inserido foi positivo
+		if (adicionar < 0) {
+			cout << "Insira um valor positivo!: " << endl;
+			j--;
+		}
 	}
+	cout << "** Moedas carregadas com sucesso **";
+	imprimeFundos(moedas);
+}
 
 	bool VerificarAviso(int moedas[6]) {
 		bool aviso = false;
