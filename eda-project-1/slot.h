@@ -22,6 +22,8 @@ void lerFicheiroProdutos(string* listaprodutos);
 
 void lerFicheiroPrecos(float* listaprecos);
 
+void imprimeMaquina(slot* maquina, int numSlots);
+
 bool slotVazio(slot slot);
 
 

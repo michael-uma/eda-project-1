@@ -34,6 +34,17 @@ void lerFicheiroPrecos(float* listaprecos) {
     }*/
 }
 
+void imprimeMaquina(slot* maquina, int numSlots) {
+    cout << "-------- Máquina de Vending: --------\n" << endl;
+    for (int i = 0; i < numSlots; i++) {
+        cout << "Slot : " << maquina[i].code << endl;
+        cout << "Produto : " << maquina[i].p.name << endl;
+        cout << "Preço : " << maquina[i].p.preco << " " << EURO << endl;
+        cout << "Quantidade : " << maquina[i].quantidade << "   | Capacidade : " << maquina[i].quantidadeMax << endl;
+        cout << "------------------------------\n" << endl;
+    }
+}
+
 bool slotVazio(slot slot) 
 {
     return (slot.quantidade == 0);
