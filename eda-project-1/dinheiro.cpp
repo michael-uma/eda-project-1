@@ -135,20 +135,20 @@ void carregar_moedas(int moedas[6]) {
 	imprimeFundos(moedas);
 }
 
-	bool VerificarAviso(int moedas[6]) {
-		bool aviso = false;
-		if (moedas[0] <= 3 || moedas[1] <= 3 || moedas[2] <= 3 || moedas[3] <= 3 || moedas[4] <= 3 || moedas[5] <= 3)
-			aviso = true;
-		return aviso;
-	}
+bool VerificarAviso(int moedas[6]) {
+	bool aviso = false;
+	if (moedas[0] <= 3 || moedas[1] <= 3 || moedas[2] <= 3 || moedas[3] <= 3 || moedas[4] <= 3 || moedas[5] <= 3)
+		aviso = true;
+	return aviso;
+}
 
-	void imprimeFundos(int moedas[6])
-	{
-		cout << "*** Fundos ***" << endl;
-		cout << "2 euros ->" << moedas[0] << endl;
-		cout << "1 euros-> " << moedas[1] << endl;
-		cout << "50 centimos->" << moedas[2] << endl;
-		cout << "20 centimos-> " << moedas[3] << endl;
-		cout << "10 centimos -> " << moedas[4] << endl;
-		cout << "5 centimos-> " << moedas[5] << endl << endl;
-	}
+void imprimeFundos(int moedas[6])
+{
+	cout << "*** Fundos ***" << endl;
+	cout << "2 euros ->" << moedas[0] << endl;
+	cout << "1 euros-> " << moedas[1] << endl;
+	cout << "50 centimos->" << moedas[2] << endl;
+	cout << "20 centimos-> " << moedas[3] << endl;
+	cout << "10 centimos -> " << moedas[4] << endl;
+	cout << "5 centimos-> " << moedas[5] << endl << endl;
+}
