@@ -225,6 +225,33 @@ void limparSlot(slot* maquina) {
 	cout << endl;
 }
 
+void adicionarSlot(slot*maquina, int numslots) {
+	char c;
+	cout << "Indique a letra do slot a adicionar: " << endl;
+	cin >> c;
+	int capSlot;
+	cout <<" Indique a capacidade do slot :" << endl;
+	cin >> capSlot;
+	int posslot = buscaPos(c);
+	numslots = numslots + 1;
+	slot* maquinaslot = new slot[numslots];
+	for (int i = 0; i - numslots - 2; i++) {
+		maquinaslot[i].p.name = maquina[i].p.name;
+		maquinaslot[i].p.preco = maquina[i].p.preco;
+		maquinaslot[i].quantidade = maquina[i].quantidade;
+		maquinaslot[i].code = maquina[i].code;
+		maquinaslot[i].quantidadeMax = maquina[i].quantidadeMax;
+	}
+	maquinaslot[numslots - 1].code = c;
+	maquinaslot[numslots - 1].quantidadeMax = capSlot;
+	maquinaslot[numslots - 1].p.name = "Vazio";
+	maquinaslot[numslots - 1].p.preco = 0;
+	maquinaslot[numslots - 1].quantidade = 0;
+	maquina = maquinaslot;
+}
+
+
+
 void limparMaquina(slot* maquina, int numSlots) {
 	for (int i = 0; i < numSlots; i++) {
 		maquina[i].p.name = "Vazio";
@@ -345,6 +372,14 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		}
 		else if (escolha_funcionario == 5) {
 			cout << "Escolheu adicionar slots! " << endl;
+			adicionarSlot(maquina, numSlots);
+			for (int i = 0; i < numSlots; i++) {
+				cout << "Slot : " << maquina[i].code << endl;
+				cout << "Produto : " << maquina[i].p.name << endl;
+				cout << "Preço : " << maquina[i].p.preco << " " << EURO << endl;
+				cout << "Quantidade : " << maquina[i].quantidade << "   | Capacidade : " << maquina[i].quantidadeMax << endl;
+				cout << "------------------------------\n" << endl;
+			}
 			//Qualquer coisa para adicionar slots;
 		}
 		else if (escolha_funcionario == 6) {

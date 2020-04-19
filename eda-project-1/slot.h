@@ -33,3 +33,5 @@ char buscaCodigo(int i);
 int buscaPos(char c);
 
 void createVendingMachine(string* produtos, float* precos, slot* maquina, int numSlots);
+
+
