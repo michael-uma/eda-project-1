@@ -31,7 +31,7 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 				cout << "Introduza a quantidade de moedas de " << tiposMoedas[i] << ":";
 				cin >> quantMoedas[i];
 			}
-			double custocliente = (double) quantMoedas[0] * 2 + quantMoedas[1] * 1 + quantMoedas[2] * 0.50 + quantMoedas[3] * 0.20 + quantMoedas[4] * 0.10 + quantMoedas[5] * 0.05;
+			float custocliente = (float) quantMoedas[0] * 2 + quantMoedas[1] * 1 + quantMoedas[2] * 0.50 + quantMoedas[3] * 0.20 + quantMoedas[4] * 0.10 + quantMoedas[5] * 0.05;
 			if (custocliente < maquina[pos_escolha].p.preco) {
 				cout << "\nProduto nao devolvido! Troco devolvido!" << endl;
 			}
@@ -45,7 +45,7 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 			{
 				maquina[pos_escolha].quantidade -= 1;
 				cout << "\nProduto devolvido! Obrigado!" << endl;
-				double restomoedas = custocliente - maquina[pos_escolha].p.preco;
+				float restomoedas = custocliente - maquina[pos_escolha].p.preco;
 				//cout << "TROCO: " << restomoedas << endl;
 				moedas[0] = moedas[0] + quantMoedas[0];
 				moedas[1] = moedas[1] + quantMoedas[1];
@@ -60,27 +60,27 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 				int e = moedas[4];
 				int f = moedas[5];
 				if (restomoedas > 0.00) {
-					while (restomoedas > 2.00) {
+					while (restomoedas >= 2.00) {
 						moedas[0] = moedas[0] - 1;
 						restomoedas -= 2.00;
 					}
-					while (restomoedas > 1.00) {
+					while (restomoedas >= 1.00) {
 						moedas[1] = moedas[1] - 1;
 						restomoedas -= 1.00;
 					}
-					while (restomoedas > 0.5) {
+					while (restomoedas >= 0.5) {
 						moedas[2] = moedas[2] - 1;
 						restomoedas -= 0.50;
 					}
-					while (restomoedas > 0.2) {
+					while (restomoedas >= 0.2) {
 						moedas[3] = moedas[3] - 1;
 						restomoedas -= 0.2;
 					}
-					while (restomoedas > 0.1) {
+					while (restomoedas >= 0.1) {
 						moedas[4] = moedas[4] - 1;
 						restomoedas -= 0.1;
 					}
-					while (restomoedas > 0.05) {
+					while (restomoedas >= 0.05) {
 						moedas[5] = moedas[5] - 1;
 						restomoedas -= 0.05;
 					}
