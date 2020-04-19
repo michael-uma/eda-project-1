@@ -13,9 +13,9 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 	cout << "Introduza o código do produto: ";
 	cin >> escolha_utilizador;
 	bool sair = false;
-	while (!sair ||  (0 <= buscaPos(escolha_utilizador) && buscaPos(escolha_utilizador) < numSlots)) {
-		int pos_escolha = buscaPos(escolha_utilizador);
-		if (pos_escolha > numSlots-1) {
+	while (!sair || (0 <= buscaPos(maquina, numSlots, escolha_utilizador) && buscaPos(maquina, numSlots, escolha_utilizador) < numSlots) ) {
+		int pos_escolha = buscaPos(maquina, numSlots, escolha_utilizador);
+		if (pos_escolha > numSlots-1 || pos_escolha < 0) {
 			cout << "Por favor digite o código válido!" << endl;
 			//cout << numSlots << endl;
 			cin >> escolha_utilizador;
@@ -92,26 +92,11 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 				cout << "20 centimos: " << d - moedas[3] << " | ";
 				cout << "10 centimos: " << e - moedas[4] << " | ";
 				cout << "5 centimos: " << f - moedas[5] << endl;
-
-				cout << "*** Fundos ***" << endl;
-				cout << "2 euros ->" << moedas[0] << endl;
-				cout << "1 euros-> " << moedas[1] << endl;
-				cout << "50 centimos->" << moedas[2] << endl;
-				cout << "20 centimos-> " << moedas[3] << endl;
-				cout << "10 centimos -> " << moedas[4] << endl;
-				cout << "5 centimos-> " << moedas[5] << endl;
-				cout << endl;
+				imprimeFundos(moedas);
+				verificarFundos(moedas);
 			}
 			VerificarVazio(maquina, numSlots);
-			cout << "-------- Máquina de Vending: --------\n" << endl;
-			// Output da máquina:
-			for (int i = 0; i < numSlots; i++) {
-				cout << "Slot : " << maquina[i].code << endl;
-				cout << "Produto : " << maquina[i].p.name << endl;
-				cout << "Preço : " << maquina[i].p.preco << " " << EURO << endl;
-				cout << "Quantidade : " << maquina[i].quantidade << "   | Capacidade : " << maquina[i].quantidadeMax << endl;
-				cout << "------------------------------\n" << endl;
-			}
+			imprimeMaquina(maquina, numSlots);
 			break;
 		}
 	}

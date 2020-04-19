@@ -79,7 +79,9 @@ void imprimir_produtos(slot* maquina, int numSlots)
 	// Print da lista ordenada
 	if (opcao == 1 || opcao == 2 || opcao == 3) {
 		for (int i = 0; i < numSlots; i++) {
-			cout << produtos[i] << endl;
+			if (produtos[i] != "Vazio") {
+				cout << produtos[i] << endl;
+			}
 			// cout << precos[i] << endl;
 			// cout << quantidades[i] << endl;
 		}
@@ -213,43 +215,53 @@ void carregarMaquinaSlots(slot* maquina, int numSlots, string fileName) {
 	myFile.close();
 }
 
-void limparSlot(slot* maquina) {
+void limparSlot(slot* maquina, int numSlots) {
 	char c;
 	cout << "Qual o slot para remover?" << endl;
 	cin >> c;
-	int posslot = buscaPos(c);
-	maquina[posslot].p.name = "Vazio";
-	maquina[posslot].p.preco = 0;
-	maquina[posslot].quantidade = 0;
-	cout << "Foi limpado o slot com sucesso!" << endl;
-	cout << endl;
+	int posslot = buscaPos(maquina, numSlots, c);
+	if (posslot >= 0) {
+		maquina[posslot].p.name = "Vazio";
+		maquina[posslot].p.preco = 0;
+		maquina[posslot].quantidade = 0;
+		imprimeMaquina(maquina, numSlots);
+		cout << "Foi limpado o slot com sucesso!" << endl << endl;
+	}
+	else {
+		cout << "Slot não encontrado. Retornando ao menu anterior." << endl << endl;
+	}
 }
 
-void adicionarSlot(slot*maquina, int numslots) {
+slot* adicionarSlot(slot* maquina, int numSlots) {
+
 	char c;
-	cout << "Indique a letra do slot a adicionar: " << endl;
-	cin >> c;
+	do {
+		cout << "Indique a letra do slot a adicionar: " << endl;
+		cin >> c;
+		if (buscaPos(maquina, numSlots, c) >= 0)
+			cout << "Insira um código que não exista ainda. Por favor tente denovo." << endl;
+	} while (buscaPos(maquina, numSlots, c) >= 0);
+
 	int capSlot;
 	cout <<" Indique a capacidade do slot :" << endl;
 	cin >> capSlot;
-	int posslot = buscaPos(c);
-	numslots = numslots + 1;
-	slot* maquinaslot = new slot[numslots];
-	for (int i = 0; i < numslots - 2; i++) {
+
+	slot* maquinaslot = new slot[numSlots+1];
+	for (int i = 0; i < numSlots; i++) {
 		maquinaslot[i].p.name = maquina[i].p.name;
 		maquinaslot[i].p.preco = maquina[i].p.preco;
 		maquinaslot[i].quantidade = maquina[i].quantidade;
 		maquinaslot[i].code = maquina[i].code;
 		maquinaslot[i].quantidadeMax = maquina[i].quantidadeMax;
 	}
-	maquinaslot[numslots - 1].code = c;
-	maquinaslot[numslots - 1].quantidadeMax = capSlot;
-	maquinaslot[numslots - 1].p.name = "Vazio";
-	maquinaslot[numslots - 1].p.preco = 0;
-	maquinaslot[numslots - 1].quantidade = 0;
-	maquina = maquinaslot;
+	maquinaslot[numSlots].code = c;
+	maquinaslot[numSlots].quantidadeMax = capSlot;
+	maquinaslot[numSlots].p.name = "Vazio";
+	maquinaslot[numSlots].p.preco = 0;
+	maquinaslot[numSlots].quantidade = 0;
+	// retorna para atualizar a máquina
+	return maquinaslot;
 }
-
 
 
 void limparMaquina(slot* maquina, int numSlots) {
@@ -310,15 +322,6 @@ void limparMaquina(slot* maquina, int numSlots) {
 //	}
 //}
 
-bool temVazio(slot* maquina, int numSlots) {
-	bool eVazio = false;
-	for (int i = 0; i < numSlots; i++) {
-		if (maquina[i].p.name == "Vazio")
-			eVazio = true;
-	}
-	return eVazio;
-}
-
 void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vejam se altera alguns codigos!!! PQ ADICIONEI OUTRO ARGUMENTO!!!!
 {
 	bool sair = false;
@@ -342,8 +345,7 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 
 		if (escolha_funcionario == 1) {
 			cout << "Escolheu limpar slots! " << endl;
-			limparSlot(maquina);
-			imprimeMaquina(maquina, numSlots);
+			limparSlot(maquina, numSlots);
 		}
 		else if (escolha_funcionario == 2) {
 			cout << "Escolheu limpar a máquina! " << endl;
@@ -360,12 +362,11 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		}
 		else if (escolha_funcionario == 5) {
 			cout << "Escolheu adicionar slots! " << endl;
-			adicionarSlot(maquina, numSlots);
+			maquina = adicionarSlot(maquina, numSlots);
 			numSlots += 1;
 			imprimeMaquina(maquina, numSlots);
 
-			cout << "Número de Slots: " << numSlots << endl;
-			//Qualquer coisa para adicionar slots;
+			cout << "Número de Slots Total: " << numSlots << endl;
 		}
 		else if (escolha_funcionario == 6) {
 			cout << "Escolheu carregar moedas! " << endl;

@@ -59,7 +59,17 @@ void VerificarVazio(slot* maquina, int numSlots) {
     }
 }
 
-char buscaCodigo(int i)
+bool temVazio(slot* maquina, int numSlots) {
+    bool eVazio = false;
+    for (int i = 0; i < numSlots; i++) {
+        if (maquina[i].p.name == "Vazio")
+            eVazio = true;
+    }
+    return eVazio;
+}
+
+// esta função é usada para criar a máquina apenas
+char inicializaCodigo(int i)
 {
     char c;
     switch (i) {
@@ -100,58 +110,70 @@ char buscaCodigo(int i)
         c = 'L';
         break;
     default:
-        c = 'X';
         break;
     }
     return c;
 }
 
-int buscaPos(char c)
-{
-    int i;
-    switch (c) {
-    case 'A':
-        i = 0;
-        break;
-    case 'B':
-        i = 1;
-        break;
-    case 'C':
-        i = 2;
-        break;
-    case 'D':
-        i = 3;
-        break;
-    case 'E':
-        i = 4;
-        break;
-    case 'F':
-        i = 5;
-        break;
-    case 'G':
-        i = 6;
-        break;
-    case 'H':
-        i = 7;
-        break;
-    case 'I':
-        i = 8;
-        break;
-    case 'J':
-        i = 9;
-        break;
-    case 'K':
-        i = 10;
-        break;
-    case 'L':
-        i = 11;
-        break;
-    default:
-        i = 100;
-        break;
-    }
-    return i;
+char buscaCodigo(slot* maquina, int i) {
+    return maquina[i].code;
 }
+
+int buscaPos(slot* maquina, int numSlots, char c) {
+    for (int i = 0; i < numSlots; i++) {
+        if (maquina[i].code == c) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+//int OLD_buscaPos(char c)
+//{
+//    int i;
+//    switch (c) {
+//    case 'A':
+//        i = 0;
+//        break;
+//    case 'B':
+//        i = 1;
+//        break;
+//    case 'C':
+//        i = 2;
+//        break;
+//    case 'D':
+//        i = 3;
+//        break;
+//    case 'E':
+//        i = 4;
+//        break;
+//    case 'F':
+//        i = 5;
+//        break;
+//    case 'G':
+//        i = 6;
+//        break;
+//    case 'H':
+//        i = 7;
+//        break;
+//    case 'I':
+//        i = 8;
+//        break;
+//    case 'J':
+//        i = 9;
+//        break;
+//    case 'K':
+//        i = 10;
+//        break;
+//    case 'L':
+//        i = 11;
+//        break;
+//    default:
+//        i = -1;
+//        break;
+//    }
+//    return i;
+//}
 
 void createVendingMachine(string* produtos, float* precos, slot* maquina, int numSlots)
 {
@@ -188,7 +210,7 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
 
         maquina[i].p.name = produtos[posProduto];
         maquina[i].p.preco = precos[posPreco];
-        maquina[i].code = buscaCodigo(i);
+        maquina[i].code = inicializaCodigo(i);
         maquina[i].quantidadeMax = qProdutosMax;
         maquina[i].quantidade = maquina[i].quantidadeMax;
     }

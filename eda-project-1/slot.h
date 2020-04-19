@@ -25,14 +25,13 @@ void lerFicheiroPrecos(float* listaprecos);
 void imprimeMaquina(slot* maquina, int numSlots);
 
 bool slotVazio(slot slot);
-
-
 void VerificarVazio(slot* maquina, int numSlots);
+bool temVazio(slot* maquina, int numSlots);
 
+char inicializaCodigo(int i);
 
-char buscaCodigo(int i);
-
-int buscaPos(char c);
+char buscaCodigo(slot* maquina, int i);
+int buscaPos(slot* maquina, int numSlots, char c);
 
 void createVendingMachine(string* produtos, float* precos, slot* maquina, int numSlots);
 

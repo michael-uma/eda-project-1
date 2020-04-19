@@ -8,7 +8,7 @@ using namespace std;
 
 
 
-void fundos(int moedas[6])
+void cria_fundos(int moedas[6])
 {
 	moedas[0] = rand() % 11 + 10; //de 10 a 20
 	moedas[1] = rand() % 11 + 10; //de 10 a 20
@@ -18,14 +18,6 @@ void fundos(int moedas[6])
 	moedas[5] = rand() % 11 + 10; //de 10 a 20
 
 	verificarFundos(moedas);
-
-	/*cout << "***Antes***" << endl;
-	cout << "2 ->" << moedas[0] << endl;
-	cout << "1-> " << moedas[1] << endl;
-	cout << "0.5 ->" << moedas[2] << endl;
-	cout << "0.2-> " << moedas[3] << endl;
-	cout << "0.1-> " << moedas[4] << endl;
-	cout << "0.05-> " << moedas[5] << endl; //teste!!!*/
 }
 
 void verificarFundos(int moedas[6])
@@ -56,14 +48,7 @@ void verificarFundos(int moedas[6])
 void remover_fundos(int moedas[6])
 {
 	//TEMOS QUE VER ANTES O FUNDOS PARA PODER REMOVER
-	cout << "*** Fundos ***" << endl;
-	cout << "2 euros ->" << moedas[0] << endl;
-	cout << "1 euros-> " << moedas[1] << endl;
-	cout << "50 cêntimos->" << moedas[2] << endl;
-	cout << "20 cêntimos-> " << moedas[3] << endl;
-	cout << "10 cêntimos -> " << moedas[4] << endl;
-	cout << "5 cêntimos-> " << moedas[5] << endl;
-	cout << endl;
+	imprimeFundos(moedas);
 	int remover;
 	cout << "***Remover Fundos***"<<endl;
 	for (int i = 0; i < 6; i++) {
@@ -99,27 +84,14 @@ void remover_fundos(int moedas[6])
 		}
 		moedas[i] = moedas[i] - remover;
 	}
-	cout << "*** Fundos ***" << endl;
-	cout << "2 euros ->" << moedas[0] << endl;
-	cout << "1 euros-> " << moedas[1] << endl;
-	cout << "50 cêntimos->" << moedas[2] << endl;
-	cout << "20 cêntimos-> " << moedas[3] << endl;
-	cout << "10 cêntimos -> " << moedas[4] << endl;
-	cout << "5 cêntimos-> " << moedas[5] << endl;
-	cout << endl;
+	cout << "** Fundos removidos com sucesso **";
+	imprimeFundos(moedas);
 }
 
 
 	void carregar_moedas(int moedas[6]) {
 		//TEMOS QUE VER ANTES O FUNDOS PARA PODER CARREGAR
-		cout << "*** Fundos ***" << endl;
-		cout << "2 euros ->" << moedas[0] << endl;
-		cout << "1 euros-> " << moedas[1] << endl;
-		cout << "50 cêntimos->" << moedas[2] << endl;
-		cout << "20 cêntimos-> " << moedas[3] << endl;
-		cout << "10 cêntimos -> " << moedas[4] << endl;
-		cout << "5 cêntimos-> " << moedas[5] << endl;
-		cout << endl;
+		imprimeFundos(moedas);
 		int adicionar = -1;
 		cout << "*** Carregar moedas ***" << endl;
 		for (int j = 0; j < 6; j++) {
@@ -160,14 +132,7 @@ void remover_fundos(int moedas[6])
 			}
 		}
 		cout << "** Moedas carregadas com sucesso **";
-		cout << "*** Fundos ***" << endl;
-		cout << "2 euros ->" << moedas[0] << endl;
-		cout << "1 euros-> " << moedas[1] << endl;
-		cout << "50 cêntimos->" << moedas[2] << endl;
-		cout << "20 cêntimos-> " << moedas[3] << endl;
-		cout << "10 cêntimos -> " << moedas[4] << endl;
-		cout << "5 cêntimos-> " << moedas[5] << endl;
-		cout << endl;
+		imprimeFundos(moedas);
 	}
 
 	bool VerificarAviso(int moedas[6]) {
@@ -175,4 +140,15 @@ void remover_fundos(int moedas[6])
 		if (moedas[0] <= 3 || moedas[1] <= 3 || moedas[2] <= 3 || moedas[3] <= 3 || moedas[4] <= 3 || moedas[5] <= 3)
 			aviso = true;
 		return aviso;
+	}
+
+	void imprimeFundos(int moedas[6])
+	{
+		cout << "*** Fundos ***" << endl;
+		cout << "2 euros ->" << moedas[0] << endl;
+		cout << "1 euros-> " << moedas[1] << endl;
+		cout << "50 centimos->" << moedas[2] << endl;
+		cout << "20 centimos-> " << moedas[3] << endl;
+		cout << "10 centimos -> " << moedas[4] << endl;
+		cout << "5 centimos-> " << moedas[5] << endl << endl;
 	}

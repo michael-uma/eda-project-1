@@ -15,14 +15,15 @@ using namespace std;
 NOTA:
 TEMOS QUE CORRIGIR OS PROBLEMAS COM O LOCALE
 senão as coisas ficam feias e dificeis de ler :p
+
+UPDATE:
+possivelmente corrigido? teremos que testar um pouco mais só para ter certeza
 */
 
 
 int main() {
-	//inicialização
-	// locale pt = pt.global(locale(""));
-	// locale pt = pt.global(locale("pt-PT.UTF8")); // <-- isto quase que dá, mas causa com que outros couts não consigam imprimir. não sei
-	locale::global(locale(""));
+	// inicialização
+	locale pt = pt.global(locale("pt-PT.UTF8")); // <-- isto quase que dá, mas causa com que outros couts não consigam imprimir. não sei
 	srand((unsigned)time(NULL));
 	int* moedas = new int[6];
 
@@ -36,7 +37,7 @@ int main() {
 	int numSlots = rand() % 4 + 9;
 	slot* maquina = new slot[numSlots];
 	createVendingMachine(listaprodutos, listaprecos, maquina, numSlots);
-	fundos(moedas);
+	cria_fundos(moedas);
 
 	// Menu de opcoes
  	bool sair = false;
