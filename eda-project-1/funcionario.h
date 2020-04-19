@@ -1,6 +1,7 @@
 #pragma once
 #include "dinheiro.h"
 #include "slot.h"
+extern int numSlots;
 
 void menu_funcionario(slot* maquina, int moedas[6], int numSlots);
 
@@ -17,6 +18,6 @@ void carregarMaquinaMoedas(slot* maquina, string fileName, int moedas[]);
 void carregarMaquinaSlots(slot* maquina, int numSlots, string fileName);
 
 void limparSlot(slot* maquina, int numSlots);
-slot* adicionarSlot(slot* maquina, int numslots);
+void adicionarSlot(slot* maquina, int numslots);
 void limparMaquina(slot* maquina, int numSlots);
 

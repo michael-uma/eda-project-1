@@ -6,7 +6,6 @@
 using namespace std;
 
 void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
-
 	verificarFundos(moedas);
 	char escolha_utilizador;
 	cout << "\n******* Bem-Vindo Cliente *******" << endl;

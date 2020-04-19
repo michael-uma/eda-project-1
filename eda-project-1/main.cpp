@@ -20,10 +20,10 @@ UPDATE:
 possivelmente corrigido? teremos que testar um pouco mais só para ter certeza
 */
 
-
+int numSlots; // variável global -- utilizada para atualizar o numSlots para qualquer situação
 int main() {
 	// inicialização
-	locale pt = pt.global(locale("pt-PT.UTF8")); // <-- isto quase que dá, mas causa com que outros couts não consigam imprimir. não sei
+	locale pt = pt.global(locale("pt-PT.UTF8"));
 	srand((unsigned)time(NULL));
 	int* moedas = new int[6];
 
@@ -34,8 +34,8 @@ int main() {
 	lerFicheiroProdutos(listaprodutos);
 
 	//Criar Vending Machine
-	int numSlots = rand() % 4 + 9;
-	slot* maquina = new slot[numSlots];
+	numSlots = rand() % 4 + 9;
+	slot* maquina = new slot[100];
 	createVendingMachine(listaprodutos, listaprecos, maquina, numSlots);
 	cria_fundos(moedas);
 

@@ -232,35 +232,36 @@ void limparSlot(slot* maquina, int numSlots) {
 	}
 }
 
-slot* adicionarSlot(slot* maquina, int numSlots) {
+void adicionarSlot(slot* maquinaslot, int numSlots) {
 
 	char c;
 	do {
 		cout << "Indique a letra do slot a adicionar: " << endl;
 		cin >> c;
-		if (buscaPos(maquina, numSlots, c) >= 0)
+		if (buscaPos(maquinaslot, numSlots, c) >= 0)
 			cout << "Insira um código que não exista ainda. Por favor tente denovo." << endl;
-	} while (buscaPos(maquina, numSlots, c) >= 0);
+	} while (buscaPos(maquinaslot, numSlots, c) >= 0);
 
 	int capSlot;
 	cout <<" Indique a capacidade do slot :" << endl;
 	cin >> capSlot;
 
-	slot* maquinaslot = new slot[numSlots+1];
-	for (int i = 0; i < numSlots; i++) {
+	//slot* maquinaslot = new slot[numSlots+1];
+	/*for (int i = 0; i < numSlots; i++) {
 		maquinaslot[i].p.name = maquina[i].p.name;
 		maquinaslot[i].p.preco = maquina[i].p.preco;
 		maquinaslot[i].quantidade = maquina[i].quantidade;
 		maquinaslot[i].code = maquina[i].code;
 		maquinaslot[i].quantidadeMax = maquina[i].quantidadeMax;
-	}
+	}*/
+
 	maquinaslot[numSlots].code = c;
 	maquinaslot[numSlots].quantidadeMax = capSlot;
 	maquinaslot[numSlots].p.name = "Vazio";
 	maquinaslot[numSlots].p.preco = 0;
 	maquinaslot[numSlots].quantidade = 0;
 	// retorna para atualizar a máquina
-	return maquinaslot;
+	// return maquinaslot;
 }
 
 
@@ -328,7 +329,7 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 	while (!sair) {
 		int escolha_funcionario;
 		cout << "\n******* Bem-Vindo Funcionário *******" << endl;
-		cout << "1. Limpar slots" << endl;
+		cout << "1. Limpar slot" << endl;
 		cout << "2. Limpar máquina" << endl;
 		cout << "3. Adicionar produto" << endl;
 		cout << "4. Alterar preço" << endl;
@@ -344,7 +345,7 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		cin >> escolha_funcionario;
 
 		if (escolha_funcionario == 1) {
-			cout << "Escolheu limpar slots! " << endl;
+			cout << "Escolheu limpar slot! " << endl;
 			limparSlot(maquina, numSlots);
 		}
 		else if (escolha_funcionario == 2) {
@@ -362,8 +363,9 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		}
 		else if (escolha_funcionario == 5) {
 			cout << "Escolheu adicionar slots! " << endl;
-			maquina = adicionarSlot(maquina, numSlots);
-			numSlots += 1;
+			adicionarSlot(maquina, numSlots);
+			::numSlots += 1; // atualização da variável global
+			numSlots += 1; // atualização da variável local
 			imprimeMaquina(maquina, numSlots);
 
 			cout << "Número de Slots Total: " << numSlots << endl;
@@ -384,16 +386,12 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		}
 		else if (escolha_funcionario == 9) {
 			cout << "Escolheu carregar máquina! " << endl;
-			int novonumSlots = carregarMaquinanumSlots(numSlots, "guardadoNumslots.txt");
-			int tempnum = numSlots;
-			numSlots = novonumSlots;
+
+			::numSlots = carregarMaquinanumSlots(numSlots, "guardadoNumslots.txt"); // atualização da variável global
+			numSlots = carregarMaquinanumSlots(numSlots, "guardadoNumslots.txt"); // atualização da variável local
+
 			carregarMaquinaMoedas(maquina, "guardadoMoedas.txt", moedas);
-			slot* maquinacarregada = new slot[numSlots];
-			slot* temp = maquina;
-			maquina = maquinacarregada;
-			delete[] temp;
 			carregarMaquinaSlots(maquina, numSlots, "guardadoSlots.txt");
-			//cout << numSlots << endl;
 			imprimeMaquina(maquina, numSlots);
 		}
 		else if (escolha_funcionario == 10) {
