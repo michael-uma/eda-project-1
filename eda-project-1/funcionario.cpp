@@ -5,6 +5,7 @@
 #include <locale>
 #include <iostream>
 #include <fstream>
+#include <math.h>
 using namespace std;
 
 
@@ -119,13 +120,21 @@ void alterar_preco(slot* maquina, int numSlots)
 	cout << "O preço atual deste produto é: " << maquina[posProduto].p.preco << EURO << endl;
 	cout << "Insira o preço desejado para este produto: " << endl;
 	cin >> novoPreco;
-	while (int(novoPreco * 100) % 5 != 0 && novoPreco > 0) {
+	int res = round(novoPreco * 100);
+	while (res % 5 != 0 || novoPreco < 0) {
 		cout << "O preço inserido tem que ser positivo e múltiplo de 5 cêntimos. Tente denovo." << endl;
 		cin >> novoPreco;
+		res = round(novoPreco * 100);
 	}
 
 	// resultado
 	maquina[posProduto].p.preco = novoPreco;
+	for (int n = posProduto + 1; n < numSlots; n++) {
+		if (produtoInserido == maquina[n].p.name) {
+			maquina[n].p.preco = novoPreco;
+		}
+	}
+
 	cout << "Preco do produto " << maquina[posProduto].p.name << " alterado com sucesso." << endl;
 }
 
@@ -233,7 +242,6 @@ void limparSlot(slot* maquina, int numSlots) {
 }
 
 void adicionarSlot(slot* maquinaslot, int numSlots) {
-
 	char c;
 	do {
 		cout << "Indique a letra do slot a adicionar: " << endl;
@@ -273,53 +281,93 @@ void limparMaquina(slot* maquina, int numSlots) {
 	cout << endl;
 }
 
-//void adicionarProduto(slot* maquina, int numSlots) {
-//	char slot;
-//	int num;
-//	string nome;
-//	cout << "Qual o código do slot para adicionar um produto?" << endl;
-//	cin >> slot;
-//	cout << endl;
-//	cout << "Qual o numero de produtos a repor?" << endl;
-//	cin >> num;
-//	cout << endl;
-//	cout << "Qual o nome do produto a adicionar?" << endl;
-//	cin >> nome;
-//	cout << endl;
-//	int posicao = buscaCodigo(slot);
-//	if (maquina[posicao].quantidadeMax >= maquina[posicao].quantidade) {
-//		maquina[posicao].p.name == nome;
-//		maquina[posicao].quantidade == num;
-//	}
-//	else {
-//		if (eVazio) {
-//			int escolhafunc;
-//			cout << "1. Inserir no slot vazio" << endl;
-//			cout << "2. Para alterar o tamanho do slot" << endl;
-//			cout << "3. Para adicionar o produto ate a quantidade maxima do slot" << endl;
-//			cin >> escolhafunc;
-//			switch (escolhafunc)
-//			{
-//			case 1:
-//				char codigo;
-//				for (int i = 0; i < numSlots; i++) {
-//					if (maquina[i].p.name == "Vazio") {
-//						codigo = buscaCodigo(i);
-//						cout << "O slot anteriormente vazio e: " << codigo << endl;
-//						maquina[i].p.name = 
-//						break;
-//					}
-//				}
-//
-//			default:
-//				break;
-//			}
-//		}
-//		else {
-//
-//		}
-//	}
-//}
+void adicionarProduto(slot* maquina, int numSlots) {
+	char slot;
+	int num;
+	string nome;
+
+	// verificação do código do slot
+	do {
+		cout << "Qual o código do slot para adicionar um produto?" << endl;
+		cin >> slot;
+		if (buscaPos(maquina, numSlots, slot) < 0) {
+			cout << "Código de slot não presente na máquina." << endl;
+		}
+	} while (buscaPos(maquina, numSlots, slot) < 0);
+	cout << endl;
+	int posicao = buscaPos(maquina, numSlots, slot);
+
+	// input do número de produtos
+	cout << "Qual o número de produtos a repor?" << endl;
+	cin >> num;
+	cout << endl;
+
+	// verificar se o nome do produto inserido é coerente com o produtos.txt
+	string* listaprodutos = new string[NUM_PRODUTOS];
+	lerFicheiroProdutos(listaprodutos);
+	cout << "\n** Lista de produtos possíveis **" << endl;
+	cout << " -> | ";
+	for (int i = 0; i < NUM_PRODUTOS; i++) {
+		cout << listaprodutos[i] << " | ";
+	}
+	cout << endl << endl;
+
+	cin.ignore(); // limpa a consola para nao repetir infinitamente
+	bool existeProduto = false;
+	do {
+		cout << "Qual o nome do produto a adicionar?" << endl;
+		getline(std::cin, nome);
+
+		for (int i = 0; i < NUM_PRODUTOS; i++) {
+			if (nome == listaprodutos[i]) {
+				existeProduto = true;
+			}
+		}
+		if (!existeProduto) {
+			cout << "Produto não reconhecido. Por favor introduza outro produto." << endl;
+		}
+		else if (nome != maquina[posicao].p.name && (maquina[posicao].p.name != "Vazio") ) {
+			cout << "Nome do produto inserido não corresponde ao nome do produto neste slot." << endl;
+		}
+	} while (!existeProduto || (nome != maquina[posicao].p.name && maquina[posicao].p.name != "Vazio") );
+
+	delete[](listaprodutos);
+	cout << endl;
+
+	// decidindo o que fazer com os produtos inseridos
+	if (maquina[posicao].quantidadeMax >= maquina[posicao].quantidade + num) {
+		maquina[posicao].p.preco = precoDesteProduto(maquina, numSlots, nome);
+		maquina[posicao].p.name = nome;
+		maquina[posicao].quantidade += num;
+	}
+	else {
+		int escolhafunc = -1;
+		do {
+			cout << "1. Para alterar o tamanho do slot" << endl;
+			cout << "2. Para adicionar o produto ate a quantidade maxima do slot" << endl;
+			if (temVazio(maquina, numSlots)) {
+				cout << "3. Inserir os produtos a mais no slot vazio" << endl;
+			}
+			cin >> escolhafunc;
+			if (!((temVazio(maquina, numSlots) && escolhafunc == 3) || escolhafunc == 2 || escolhafunc == 1)) {
+				cout << "Por favor insira uma opcao definida." << endl;
+			}
+		} while ( !((temVazio(maquina, numSlots) && escolhafunc == 3) || escolhafunc == 2 || escolhafunc == 1) );
+		/*switch (escolhafunc)
+		{
+		case 1:
+			char codigo;
+			for (int i = 0; i < numSlots; i++) {
+				if (maquina[i].p.name == "Vazio") {
+					codigo = buscaCodigo(i);
+					cout << "O slot anteriormente vazio e: " << codigo << endl;
+					maquina[i].p.name =
+					break;
+				}
+		}*/
+	}
+}
+
 
 void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vejam se altera alguns codigos!!! PQ ADICIONEI OUTRO ARGUMENTO!!!!
 {
@@ -330,7 +378,7 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		cout << "1. Limpar slot" << endl;
 		cout << "2. Limpar máquina" << endl;
 		cout << "3. Adicionar produto" << endl;
-		cout << "4. Alterar preço" << endl;
+		cout << "4. Alterar preço(s)" << endl;
 		cout << "5. Adicionar slot" << endl;
 		cout << "6. Carregar moedas" << endl;
 		cout << "7. Imprimir produtos" << endl;
@@ -353,7 +401,8 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		}
 		else if (escolha_funcionario == 3) {
 			cout << "Escolheu adicionar produto! " << endl;
-			//Qualquer coisa para adicionar produto;
+			adicionarProduto(maquina, numSlots);
+			imprimeMaquina(maquina, numSlots);
 		}
 		else if (escolha_funcionario == 4) {
 			cout << "Escolheu alterar preço(s)! " << endl;
@@ -365,8 +414,7 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 			::numSlots += 1; // atualização da variável global
 			numSlots += 1; // atualização da variável local
 			imprimeMaquina(maquina, numSlots);
-
-			cout << "Número de Slots Total: " << numSlots << endl;
+			// cout << "Número de Slots Total: " << numSlots << endl;
 		}
 		else if (escolha_funcionario == 6) {
 			cout << "Escolheu carregar moedas! " << endl;

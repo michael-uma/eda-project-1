@@ -24,6 +24,8 @@ void lerFicheiroPrecos(float* listaprecos);
 
 void imprimeMaquina(slot* maquina, int numSlots);
 
+float precoDesteProduto(slot* maquina, int numSlots, string produto);
+
 bool slotVazio(slot slot);
 void VerificarVazio(slot* maquina, int numSlots);
 bool temVazio(slot* maquina, int numSlots);

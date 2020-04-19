@@ -45,6 +45,31 @@ void imprimeMaquina(slot* maquina, int numSlots) {
     }
 }
 
+float precoDesteProduto(slot* maquina, int numSlots, string produto)
+{
+    bool jaExiste = false;
+    int posExiste = -1;
+    for (int i = 0; i < numSlots; i++) {
+        if (maquina[i].p.name == produto) {
+            jaExiste = true;
+            posExiste = i;
+            break;
+        }
+    }
+
+    if (jaExiste) {
+        return maquina[posExiste].p.preco;
+    }
+    else {
+        float* listaprecos = new float[NUM_PRECOS];
+        lerFicheiroPrecos(listaprecos);
+        int posPreco = rand() % NUM_PRECOS;
+        float res = listaprecos[posPreco];
+        delete[](listaprecos);
+        return res;
+    }
+}
+
 bool slotVazio(slot slot) 
 {
     return (slot.quantidade == 0);

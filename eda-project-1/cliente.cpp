@@ -93,6 +93,8 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 				imprimeFundos(moedas);
 				verificarFundos(moedas);
 			}
+			cout << "Pressione qualquer tecla para continuar.";
+			cin.get();
 			VerificarVazio(maquina, numSlots);
 			imprimeMaquina(maquina, numSlots);
 			break;
