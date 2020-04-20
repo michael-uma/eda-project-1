@@ -22,28 +22,28 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 		else {
 			cout << "Escolheu : " << maquina[pos_escolha].p.name << endl;
 			//cout << numSlots << endl;
-			string tiposMoedas[6] = { "2 euros", "1 euro", "50 centimos", "20 centimos", "10 centimos", "5 centimos" };
+			string tiposMoedas[6] = { "2 euros", "1 euro", "50 cêntimos", "20 cêntimos", "10 cêntimos", "5 cêntimos" };
 			int* quantMoedas = new int[6];
 
 			for (int i = 0; i < 6; i++) {
 				cout << "Introduza a quantidade de moedas de " << tiposMoedas[i] << ":";
 				cin >> quantMoedas[i];
 			}
-			float custocliente = (float) quantMoedas[0] * 2 + quantMoedas[1] * 1 + quantMoedas[2] * 0.50 + quantMoedas[3] * 0.20 + quantMoedas[4] * 0.10 + quantMoedas[5] * 0.05;
+			double custocliente = (double) quantMoedas[0] * 2 + quantMoedas[1] * 1 + quantMoedas[2] * 0.50 + quantMoedas[3] * 0.20 + quantMoedas[4] * 0.10 + quantMoedas[5] * 0.05;
 			if (custocliente < maquina[pos_escolha].p.preco) {
-				cout << "\nProduto nao devolvido! Troco devolvido!" << endl;
+				cout << "\nProduto não devolvido! Troco devolvido!" << endl;
 			}
 			else if (maquina[pos_escolha].quantidade == 0) {
 				cout << "Slot Vazio! Troco devolvido!" << endl;
 			}
 			else if (VerificarAviso(moedas)) {
-				cout << "De momento a máquina tem poucas moedas! Produto nao devolvido! Troco devolvido!" << endl;
+				cout << "De momento a máquina tem poucas moedas! Produto não devolvido! Troco devolvido!" << endl;
 			}
 			else
 			{
 				maquina[pos_escolha].quantidade -= 1;
 				cout << "\nProduto devolvido! Obrigado!" << endl;
-				float restomoedas = custocliente - maquina[pos_escolha].p.preco;
+				double restomoedas = custocliente - maquina[pos_escolha].p.preco;
 				//cout << "TROCO: " << restomoedas << endl;
 				moedas[0] = moedas[0] + quantMoedas[0];
 				moedas[1] = moedas[1] + quantMoedas[1];
@@ -86,14 +86,14 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 				cout << "\n**TROCO**" << endl;
 				cout << "2 euros: " << a - moedas[0] << " | ";
 				cout << "1 euro: " << b - moedas[1] << " | ";
-				cout << "50 centimos: " << c - moedas[2] << " | ";
-				cout << "20 centimos: " << d - moedas[3] << " | ";
-				cout << "10 centimos: " << e - moedas[4] << " | ";
-				cout << "5 centimos: " << f - moedas[5] << endl;
+				cout << "50 cêntimos: " << c - moedas[2] << " | ";
+				cout << "20 cêntimos: " << d - moedas[3] << " | ";
+				cout << "10 cêntimos: " << e - moedas[4] << " | ";
+				cout << "5 cêntimos: " << f - moedas[5] << endl;
 				imprimeFundos(moedas);
 				verificarFundos(moedas);
 			}
-			cout << "Pressione qualquer tecla para continuar.";
+			cout << "Pressione qualquer tecla para continuar.\n";
 			cin.get();
 			VerificarVazio(maquina, numSlots);
 			imprimeMaquina(maquina, numSlots);
