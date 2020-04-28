@@ -11,7 +11,6 @@
 
 using namespace std;
 
-
 int numSlots; // variável global -- utilizada para atualizar o numSlots para qualquer situação
 int main(int argc, char* argv[]) {
 
@@ -55,7 +54,6 @@ int main(int argc, char* argv[]) {
 		delete[](listaprodutos);
 		cria_fundos(moedas);
 	}
-
 
 	// Menu de opcoes
  	bool sair = false;

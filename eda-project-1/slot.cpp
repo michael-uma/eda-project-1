@@ -204,7 +204,6 @@ int buscaPos(slot* maquina, int numSlots, char c) {
 void createVendingMachine(string* produtos, float* precos, slot* maquina, int numSlots)
 {
     int qProdutosMax, posProduto, posPreco;
-
     for (int i = 0; i < numSlots; i++) {
 
         qProdutosMax = rand() % 6 + 5;
@@ -212,7 +211,6 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
         posProduto = rand() % NUM_PRODUTOS;
 
         // Verificar se o produto escolhido já está noutro slot da máquina:
-
         bool unico = true;
         while (unico) {
             for (int j = 0; j < i; j++)
@@ -227,13 +225,10 @@ void createVendingMachine(string* produtos, float* precos, slot* maquina, int nu
             }
 
             if (!unico) {
-                // cout << "### produto alterado de " << produtos[posProduto] << " ###" << endl; // para testar
                 posProduto = rand() % NUM_PRODUTOS;
-                // cout << "### produto alterado para " << produtos[posProduto] << " ###" << endl; // para testar
                 unico = true;
             }
         }
-
         maquina[i].p.name = produtos[posProduto];
         maquina[i].p.preco = precos[posPreco];
         maquina[i].code = inicializaCodigo(i);
