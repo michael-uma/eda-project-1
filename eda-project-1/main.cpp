@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
 		file_moedas = argv[2];
 		
 		numSlots = carregarMaquinanumSlots(file_numslots); // terceiro argumento é a localização de numSlots
-		cout << numSlots << endl;
+		cout << "Número de slots: " << numSlots << endl;
 
 		carregarMaquinaMoedas(maquina, file_moedas, moedas); // segundo argumento é a localização da caixa de moedas
 		imprimeFundos(moedas);
