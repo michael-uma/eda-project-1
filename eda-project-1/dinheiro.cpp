@@ -84,7 +84,7 @@ void remover_fundos(int moedas[6])
 		}
 		moedas[i] = moedas[i] - remover;
 	}
-	cout << "** Fundos removidos com sucesso! **";
+	cout << "Fundos removidos com sucesso!" << endl;
 	imprimeFundos(moedas);
 }
 

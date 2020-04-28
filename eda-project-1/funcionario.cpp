@@ -179,7 +179,7 @@ void gravarMaquinaMoedas(slot* maquina, string fileName, int moedas[]) {
 		cout << "Erro ao abrir o ficheiro  guardadoMoedas ." << endl;
 }
 
-int carregarMaquinanumSlots(int numSlots, string fileName) {
+int carregarMaquinanumSlots(string fileName) {
 	ifstream myFile(fileName);
 	string line = "";
 	if (myFile.is_open())  //verificar se o ficheiro existe
@@ -466,8 +466,8 @@ void menu_funcionario(slot* maquina,int moedas[6], int numSlots) //Por favor vej
 		else if (escolha_funcionario == 9) {
 			cout << "Escolheu carregar máquina! " << endl;
 
-			::numSlots = carregarMaquinanumSlots(numSlots, "guardadoNumslots.txt"); // atualização da variável global
-			numSlots = carregarMaquinanumSlots(numSlots, "guardadoNumslots.txt"); // atualização da variável local
+			::numSlots = carregarMaquinanumSlots("guardadoNumslots.txt"); // atualização da variável global
+			numSlots = carregarMaquinanumSlots("guardadoNumslots.txt"); // atualização da variável local
 
 			carregarMaquinaMoedas(maquina, "guardadoMoedas.txt", moedas);
 			carregarMaquinaSlots(maquina, numSlots, "guardadoSlots.txt");

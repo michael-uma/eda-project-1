@@ -41,7 +41,7 @@ void imprimeMaquina(slot* maquina, int numSlots) {
         cout << "Produto : " << maquina[i].p.name << endl;
         cout << "Preço : " << maquina[i].p.preco << " " << EURO << endl;
         cout << "Quantidade : " << maquina[i].quantidade << "   | Capacidade : " << maquina[i].quantidadeMax << endl;
-        cout << "------------------------------\n" << endl;
+        cout << "---------------------------------\n" << endl;
     }
 }
 
@@ -93,7 +93,7 @@ bool temVazio(slot* maquina, int numSlots) {
     return eVazio;
 }
 
-// esta função é usada para criar a máquina apenas
+// esta função é usada para criar uma nova máquina apenas
 char inicializaCodigo(int i)
 {
     char c;
