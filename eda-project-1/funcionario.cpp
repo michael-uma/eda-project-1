@@ -51,9 +51,9 @@ void imprimir_produtos(slot* maquina, int numSlots)
 		for (int i = 1; i < numSlots - 1 && swapped; i++) {
 			swapped = false;
 			for (int j = numSlots - 1; j > i; j--) {
-				if (precos[i] < precos[j]) {
-					swap(precos[i], precos[j]);
-					swap(produtos[i], produtos[j]);
+				if (precos[j] < precos[j-1]) {
+					swap(precos[j], precos[j-1]);
+					swap(produtos[j], produtos[j-1]);
 					swapped = true;
 				}
 			}
@@ -64,9 +64,9 @@ void imprimir_produtos(slot* maquina, int numSlots)
 		for (int i = 1; i < numSlots - 1 && swapped; i++) {
 			swapped = false;
 			for (int j = numSlots - 1; j > i; j--) {
-				if (quantidades[i] < quantidades[j]) {
-					swap(quantidades[i], quantidades[j]);
-					swap(produtos[i], produtos[j]);
+				if (quantidades[j] < quantidades[j-1]) {
+					swap(quantidades[j], quantidades[j-1]);
+					swap(produtos[j], produtos[j-1]);
 					swapped = true;
 				}
 			}

@@ -33,7 +33,7 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 
 			cout << fixed << setprecision(2);
 
-			float custocliente =  quantMoedas[0] * 2.00 + quantMoedas[1] * 1.00 + quantMoedas[2] * 0.50 + quantMoedas[3] * 0.20 + quantMoedas[4] * 0.10 + quantMoedas[5] * 0.05;
+			int custocliente =  quantMoedas[0] * 200 + quantMoedas[1] * 100 + quantMoedas[2] * 50 + quantMoedas[3] * 20 + quantMoedas[4] * 10 + quantMoedas[5] * 5;
 			
 			if (custocliente < maquina[pos_escolha].p.preco) {
 				cout << "\nProduto não devolvido! Troco devolvido!" << endl;
@@ -48,7 +48,7 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 			{
 				maquina[pos_escolha].quantidade -= 1;
 				cout << "\nProduto devolvido! Obrigado!" << endl;
-				float restomoedas = custocliente - maquina[pos_escolha].p.preco;
+				float restomoedas = custocliente - maquina[pos_escolha].p.preco*100;
 				//cout << "TROCO: " << restomoedas << endl; //TESTE
 				moedas[0] = moedas[0] + quantMoedas[0];
 				moedas[1] = moedas[1] + quantMoedas[1];
@@ -62,35 +62,35 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 				int d = moedas[3];
 				int e = moedas[4];
 				int f = moedas[5];
-				if (restomoedas > 0.00) {
-					while (restomoedas >= 2.00) {
+				if (restomoedas > 0) {
+					while (restomoedas >= 200) {
 						moedas[0] = moedas[0] - 1;
-						restomoedas -= 2.00;
+						restomoedas -= 200;
 					}
 					//cout << "TROCO2: " << restomoedas << endl; //TESTE
-					while (restomoedas >= 1.00) {
+					while (restomoedas >= 100) {
 						moedas[1] = moedas[1] - 1;
-						restomoedas -= 1.00;
+						restomoedas -= 100;
 					}
 					//cout << "TROCO1: " << restomoedas << endl; //TESTE
-					while (restomoedas >= 0.5) {
+					while (restomoedas >= 50) {
 						moedas[2] = moedas[2] - 1;
-						restomoedas -= 0.50;
+						restomoedas -= 50;
 					}
 					//cout << "TROCO0.5: " << restomoedas << endl; //TESTE
-					while (restomoedas >= 0.2) {
+					while (restomoedas >= 20) {
 						moedas[3] = moedas[3] - 1;
-						restomoedas -= 0.2;
+						restomoedas -= 20;
 					}
 					//cout << "TROCO0.2: " << restomoedas << endl; //TESTE
-					while (restomoedas >= 0.1) {
+					while (restomoedas >= 10) {
 						moedas[4] = moedas[4] - 1;
-						restomoedas -= 0.1;
+						restomoedas -= 10;
 					}
 					//cout << "TROCO0.1: " << restomoedas << endl; //TESTE
-					while (restomoedas >= 0.05) {
+					while (restomoedas >= 5) {
 						moedas[5] = moedas[5] - 1;
-						restomoedas -= 0.05;
+						restomoedas -= 5;
 					}
 					//cout << "TROCO0.05: " << restomoedas << endl; //TESTE
 				}
