@@ -48,7 +48,7 @@ void menu_cliente(slot* maquina, int moedas[6], int numSlots) {
 			{
 				maquina[pos_escolha].quantidade -= 1;
 				cout << "\nProduto devolvido! Obrigado!" << endl;
-				float restomoedas = custocliente - maquina[pos_escolha].p.preco*100;
+				int restomoedas = custocliente - round(maquina[pos_escolha].p.preco*100);
 				//cout << "TROCO: " << restomoedas << endl; //TESTE
 				moedas[0] = moedas[0] + quantMoedas[0];
 				moedas[1] = moedas[1] + quantMoedas[1];
